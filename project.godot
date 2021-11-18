@@ -16,9 +16,12 @@ config/icon="res://icon.png"
 
 [autoload]
 
-ParticlesManager="*res://Scenes/ParticlesManager.tscn"
-ProjectileManager="*res://Scenes/ProjectileManager.tscn"
-GoreManager="*res://Scenes/GoreManager.tscn"
+ParticlesManager="*res://Scenes/Managers/ParticlesManager.tscn"
+ProjectileManager="*res://Scenes/Managers/ProjectileManager.tscn"
+GoreManager="*res://Scenes/Managers/GoreManager.tscn"
+EffectsManager="*res://Scenes/Managers/EffectsManager.tscn"
+SoundManager="*res://Scenes/Managers/SoundManager.tscn"
+LootManager="*res://Scenes/Managers/LootManager.tscn"
 
 [importer_defaults]
 

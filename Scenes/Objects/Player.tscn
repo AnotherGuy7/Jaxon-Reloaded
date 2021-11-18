@@ -1,18 +1,28 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Player.cs" type="Script" id=1]
 [ext_resource path="res://Textures/SpriteFrames/Player.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://Textures/Player/Gun.png" type="Texture" id=3]
-[ext_resource path="res://Materials/DustMaterial.tres" type="Material" id=4]
-[ext_resource path="res://Textures/Particles/Dust_1.png" type="Texture" id=5]
-[ext_resource path="res://Materials/SmokeMaterial.tres" type="Material" id=6]
-[ext_resource path="res://Textures/Particles/Dust_2.png" type="Texture" id=7]
+[ext_resource path="res://Sounds/Player/Step_2.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/Player/Step_1.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/Player/Step_3.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/Player/Step_4.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/Player/PistolShootSound.wav" type="AudioStream" id=8]
+[ext_resource path="res://Scenes/UI/PlayerUI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sounds/Player/HurtSound.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 26 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 35.125, 32 )
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+stepSounds = [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ) ]
 
 [node name="PlayerGun" type="Sprite" parent="."]
 position = Vector2( 2.5, -7 )
@@ -23,19 +33,10 @@ offset = Vector2( 0, -5 )
 [node name="GunBarrel" type="Position2D" parent="PlayerGun"]
 position = Vector2( 26, -2 )
 
-[node name="Shoot Particles" type="Particles2D" parent="PlayerGun"]
-position = Vector2( 33, -1 )
-emitting = false
-one_shot = true
-explosiveness = 1.0
-randomness = 1.0
-local_coords = false
-process_material = ExtResource( 6 )
-texture = ExtResource( 7 )
-
 [node name="PlayerAnim" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
-animation = "Idle_NA"
+animation = "Idle"
+frame = 1
 playing = true
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
@@ -44,13 +45,26 @@ shape = SubResource( 1 )
 [node name="PlayerCam" type="Camera2D" parent="."]
 current = true
 
-[node name="Jump Particles" type="Particles2D" parent="."]
-position = Vector2( 0, 24 )
-emitting = false
-lifetime = 0.7
-one_shot = true
-explosiveness = 1.0
-randomness = 1.0
-local_coords = false
-process_material = ExtResource( 4 )
-texture = ExtResource( 5 )
+[node name="SwordArea" type="Area2D" parent="."]
+
+[node name="SwordHitbox" type="CollisionShape2D" parent="SwordArea"]
+position = Vector2( 28.875, 0 )
+shape = SubResource( 2 )
+
+[node name="StepSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -5.0
+
+[node name="PistolShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+pitch_scale = 1.8
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = 24.0
+pitch_scale = 2.0
+
+[node name="PlayerUI" parent="." instance=ExtResource( 9 )]
+
+[connection signal="animation_finished" from="PlayerAnim" to="." method="OnAnimationFinished"]
+[connection signal="frame_changed" from="PlayerAnim" to="." method="OnAnimFrameChanged"]

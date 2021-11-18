@@ -7,15 +7,10 @@ public class ProjectileManager : Node2D
 	public static ProjectileManager projectileManager;
 
 	public const int Projectile_PlayerBullet = 0;
+	public const int Projectile_EnemyLaser = 1;
 
 	[Export]
 	public PackedScene[] projectiles;
-
-	public enum CollisionType
-	{
-		Player,
-		Enemies
-	}
 
 	public override void _Ready()
 	{
@@ -24,10 +19,10 @@ public class ProjectileManager : Node2D
 
 	public void SetProjectileNode()
 	{
-		projectileManager.projectileNode = GetTree().CurrentScene.GetNode<Node2D>("ProjectileNode");
+		projectileNode = GetTree().CurrentScene.GetNode<Node2D>("ProjectileNode");
 	}
 
-	public static Node2D NewProjectile(int projectileType, int damage, Vector2 position, Vector2 velocity, CollisionType collisionType)
+	public static Node2D NewProjectile(int projectileType, int damage, Vector2 position, Vector2 velocity, HelperMethods.CollisionType collisionType)
 	{
 		if (projectileManager.projectileNode == null)
 			projectileManager.SetProjectileNode();

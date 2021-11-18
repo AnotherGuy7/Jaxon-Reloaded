@@ -1,0 +1,138 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Textures/UI/Bux.png" type="Texture" id=1]
+[ext_resource path="res://Textures/UI/JaxonFace.png" type="Texture" id=2]
+[ext_resource path="res://Textures/UI/HealthBar.png" type="Texture" id=3]
+[ext_resource path="res://Textures/UI/HealthBarBar.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/UI/PlayerUI.cs" type="Script" id=5]
+
+[node name="PlayerUI" type="Control"]
+margin_right = 1024.0
+margin_bottom = 600.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="HealthBar" type="Control" parent="UILayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="TextureRect" parent="UILayer/HealthBar"]
+margin_left = 64.0
+margin_top = 32.0
+margin_right = 152.0
+margin_bottom = 50.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBarTick1" type="TextureRect" parent="UILayer/HealthBar/HealthBar"]
+margin_left = -7.0
+margin_top = 1.0
+margin_right = 18.0
+margin_bottom = 17.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBarTick2" type="TextureRect" parent="UILayer/HealthBar/HealthBar"]
+margin_left = 4.0
+margin_top = 1.0
+margin_right = 29.0
+margin_bottom = 17.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBarTick3" type="TextureRect" parent="UILayer/HealthBar/HealthBar"]
+margin_left = 15.0
+margin_top = 1.0
+margin_right = 40.0
+margin_bottom = 17.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBarTick4" type="TextureRect" parent="UILayer/HealthBar/HealthBar"]
+margin_left = 26.0
+margin_top = 1.0
+margin_right = 51.0
+margin_bottom = 17.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBarTick5" type="TextureRect" parent="UILayer/HealthBar/HealthBar"]
+margin_left = 37.0
+margin_top = 1.0
+margin_right = 62.0
+margin_bottom = 17.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBarTick6" type="TextureRect" parent="UILayer/HealthBar/HealthBar"]
+margin_left = 48.0
+margin_top = 1.0
+margin_right = 73.0
+margin_bottom = 17.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBarTick7" type="TextureRect" parent="UILayer/HealthBar/HealthBar"]
+margin_left = 59.0
+margin_top = 1.0
+margin_right = 84.0
+margin_bottom = 17.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Jaxon" type="TextureRect" parent="UILayer/HealthBar"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Money" type="TextureRect" parent="UILayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -104.0
+margin_top = 30.0
+margin_right = -64.0
+margin_bottom = 53.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoneyLabel" type="Label" parent="UILayer/Money"]
+margin_left = -40.0
+margin_top = 6.0
+margin_bottom = 20.0
+text = ":"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

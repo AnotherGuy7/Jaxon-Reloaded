@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SwordHit.wav-a247750bf437961f19f1da58b9bba45b.sample"
+
+[deps]
+
+source_file="res://Sounds/Impacts/SwordHit.wav"
+dest_files=[ "res://.import/SwordHit.wav-a247750bf437961f19f1da58b9bba45b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

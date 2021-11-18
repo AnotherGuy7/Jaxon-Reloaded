@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/RandomSound_3.wav-96cb33bb212c66afc7ef928619829177.sample"
+
+[deps]
+
+source_file="res://Sounds/Ambience/RandomSound_3.wav"
+dest_files=[ "res://.import/RandomSound_3.wav-96cb33bb212c66afc7ef928619829177.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

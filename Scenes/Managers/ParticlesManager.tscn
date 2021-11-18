@@ -1,0 +1,120 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/Managers/ParticlesManager.cs" type="Script" id=1]
+[ext_resource path="res://Scenes/Misc/EmptyParticle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Textures/Particles/Particle_2.png" type="Texture" id=3]
+[ext_resource path="res://Materials/FireSmokeMaterial.tres" type="Material" id=4]
+[ext_resource path="res://Textures/Particles/Particle_3.png" type="Texture" id=5]
+[ext_resource path="res://Materials/SmokeMaterial.tres" type="Material" id=6]
+[ext_resource path="res://Materials/DustMaterial.tres" type="Material" id=7]
+[ext_resource path="res://Textures/Particles/Particle_1.png" type="Texture" id=8]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 5, 2, 1 )
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 2.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.94902, 0.898039, 0.592157, 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 5, 2, 1 )
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 2.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.92549, 0.301961, 0.301961, 1 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 3.0
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 16.0
+initial_velocity_random = 1.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 15.0
+linear_accel_random = 1.0
+angle_random = 1.0
+scale = 1.2
+scale_random = 1.0
+color = Color( 0.529412, 0.564706, 0.564706, 1 )
+hue_variation_random = 0.14
+
+[node name="ParticlesManager" type="Node2D"]
+script = ExtResource( 1 )
+emptyParticleEmmitter = ExtResource( 2 )
+
+[node name="BulletParticles" type="Particles2D" parent="."]
+visible = false
+emitting = false
+amount = 48
+speed_scale = 2.0
+local_coords = false
+process_material = SubResource( 1 )
+
+[node name="LaserParticles" type="Particles2D" parent="."]
+visible = false
+emitting = false
+amount = 48
+speed_scale = 2.0
+local_coords = false
+process_material = SubResource( 3 )
+
+[node name="SmokeParticles" type="Particles2D" parent="."]
+visible = false
+emitting = false
+explosiveness = 1.0
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 2 )
+texture = ExtResource( 3 )
+
+[node name="FireSmokeParticles" type="Particles2D" parent="."]
+visible = false
+emitting = false
+amount = 12
+lifetime = 5.0
+speed_scale = 2.0
+randomness = 1.0
+local_coords = false
+process_material = ExtResource( 4 )
+texture = ExtResource( 5 )
+
+[node name="ShootParticles" type="Particles2D" parent="."]
+visible = false
+emitting = false
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = false
+process_material = ExtResource( 6 )
+texture = ExtResource( 3 )
+
+[node name="JumpParticles" type="Particles2D" parent="."]
+visible = false
+emitting = false
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = false
+process_material = ExtResource( 7 )
+texture = ExtResource( 8 )
+
+[node name="ParticleLayer" type="CanvasLayer" parent="."]
+follow_viewport_enable = true

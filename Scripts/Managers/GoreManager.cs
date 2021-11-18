@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public class GoreManager : Node2D
 {
@@ -9,16 +8,20 @@ public class GoreManager : Node2D
 	[Export]
 	public Texture[] textures;
 
+	public static CanvasLayer goreLayer;
 	public static GoreManager goreManager;
 
-	public const int AmountOfGore = 3;
-	public const int Barrel_1 = 0;
-	public const int Barrel_2 = 1;
-	public const int Barrel_3 = 2;
+	public const int AmountOfGore = 5;
+	public const int Gore_Barrel1 = 0;
+	public const int Gore_Barrel2 = 1;
+	public const int Gore_Barrel3 = 2;
+	public const int Gore_Drone1 = 3;
+	public const int Gore_Drone2 = 4;
 
 	public override void _Ready()
 	{
 		goreManager = this;
+		goreLayer = GetNode<CanvasLayer>("GoreLayer");
 	}
 
 	public static void SpawnGore(int textureIndex, Vector2 position, Vector2 initialVelocity)
@@ -33,6 +36,6 @@ public class GoreManager : Node2D
 		newGore.LinearVelocity = initialVelocity;
 		newGore.Set("goreTextureIndex", textureIndex);
 
-		goreManager.AddChild(newGore);
+		goreLayer.AddChild(newGore);
 	}
 }

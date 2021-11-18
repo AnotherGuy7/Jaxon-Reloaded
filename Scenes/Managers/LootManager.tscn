@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Managers/LootManager.cs" type="Script" id=1]
+[ext_resource path="res://Scenes/Environment/Pentabit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Environment/Unibit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Environment/Decibit.tscn" type="PackedScene" id=4]
+
+[node name="LootManager" type="Node2D"]
+script = ExtResource( 1 )
+coins = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ]

@@ -7,7 +7,7 @@ public class Projectile : Area2D
 	public int damage;
 
 	[Export]
-	public ProjectileManager.CollisionType collisionType;
+	public HelperMethods.CollisionType collisionType;
 
 	public Vector2 velocity;
 	public Sprite projectileTexture;
@@ -27,11 +27,11 @@ public class Projectile : Area2D
 	private void OnBodyEntered(object body)
 	{
 		Node2D node = body as Node2D;
-		if (body is KinematicBody)
+		if (body is PhysicsBody2D)
 		{
 			if (node.HasMethod("Hurt"))
 			{
-				if ((ProjectileManager.CollisionType)node.Get("collisionType") == collisionType)
+				if (HelperMethods.CollisionTypeMatch(node, collisionType))
 				{
 					node.Call("Hurt", damage);
 					QueueFree();

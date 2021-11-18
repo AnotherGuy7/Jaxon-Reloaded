@@ -1,0 +1,38 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Textures/Environment/Decibit/Decibit00.png" type="Texture" id=1]
+[ext_resource path="res://Textures/Environment/Decibit/Decibit01.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Environment/Decibit/Decibit02.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Environment/Decibit/Decibit03.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Environment/Decibit/Decibit04.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Environment/Decibit/Decibit06.png" type="Texture" id=6]
+[ext_resource path="res://Textures/Environment/Decibit/Decibit09.png" type="Texture" id=7]
+[ext_resource path="res://Textures/Environment/Decibit/Decibit07.png" type="Texture" id=8]
+[ext_resource path="res://Textures/Environment/Decibit/Decibit08.png" type="Texture" id=9]
+[ext_resource path="res://Textures/Environment/Decibit/Decibit05.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/Environment/Coins.cs" type="Script" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
+
+[node name="Decibit" type="AnimatedSprite"]
+frames = SubResource( 1 )
+frame = 4
+playing = true
+script = ExtResource( 11 )
+coinValue = 10
+
+[node name="PickupArea" type="Area2D" parent="."]
+
+[node name="PickupBox" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="PickupArea" to="." method="OnBodyEntered"]

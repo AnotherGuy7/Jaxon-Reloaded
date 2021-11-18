@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Textures/Environment/ExplosiveBarrel.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/ExplosiveBarrel.cs" type="Script" id=2]
+[ext_resource path="res://Scripts/Environment/ExplosiveBarrel.cs" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10, 16 )
+extents = Vector2( 10, 14.5 )
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 80.0

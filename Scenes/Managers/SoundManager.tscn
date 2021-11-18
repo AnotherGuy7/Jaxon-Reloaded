@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Managers/SoundManager.cs" type="Script" id=1]
+[ext_resource path="res://Sounds/Ambience/BackgroundWind.wav" type="AudioStream" id=2]
+[ext_resource path="res://Sounds/Ambience/RandomSound_2.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/Ambience/RandomSound_1.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/Impacts/Impact_Metal.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/Environment/Explosion.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/Ambience/RandomSound_3.wav" type="AudioStream" id=7]
+
+[node name="SoundManager" type="Node2D"]
+script = ExtResource( 1 )
+randomSounds = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 7 ) ]
+
+[node name="BackgroundNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -22.0
+autoplay = true
+
+[node name="RandomSoundPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -18.0
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="MetalImpactSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 5 )
+volume_db = -8.0
+pitch_scale = 1.5
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 6 )
+volume_db = -7.0
