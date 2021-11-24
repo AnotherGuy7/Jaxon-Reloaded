@@ -4,8 +4,6 @@ using System;
 public class SoundManager : Node2D
 {
 	private AudioStreamPlayer randomSound;
-	private AudioStreamPlayer metalImpactSound;
-	private AudioStreamPlayer explosionSound;
 
 	public static SoundManager soundManager;
 
@@ -15,7 +13,9 @@ public class SoundManager : Node2D
 	public AudioStreamPlayer[] sounds;
 
 	public const int Sounds_MetalImpact = 0;
-	public const int Sounds_Exposion = 1;
+	public const int Sounds_Explosion = 1;
+	public const int Sounds_BigExplosion = 2;
+	public const int Sound_BasicImpact = 3;
 
 	public override void _Ready()
 	{

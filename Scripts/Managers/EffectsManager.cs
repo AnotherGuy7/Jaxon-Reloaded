@@ -11,6 +11,7 @@ public class EffectsManager : Node2D
 	public static Random random;
 	public static EffectsManager effectsManager;
 	public static Node2D environmentNode;
+	public static bool environmentNodeLoaded = false;
 
 	public override void _Ready()
 	{
@@ -18,7 +19,18 @@ public class EffectsManager : Node2D
 
 		random = new Random();
 		cameraShakeTimer = GetNode<Timer>("CameraShakeTimer");
-		environmentNode = GetTree().CurrentScene.GetNode<Node2D>("EnvironmentNode");
+
+		AttemptSetEnvironmentNode();
+	}
+	
+	public static void AttemptSetEnvironmentNode()
+    {
+		SceneTree sceneTree = effectsManager.GetTree();
+		if (IsInstanceValid(sceneTree.CurrentScene.GetNodeOrNull<Node2D>("EnvironmentNode")))
+		{
+			environmentNodeLoaded = true;
+			environmentNode = effectsManager.GetTree().CurrentScene.GetNode<Node2D>("EnvironmentNode");
+		}
 	}
 
 	/// <summary>

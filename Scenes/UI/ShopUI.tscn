@@ -1,0 +1,298 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/UI/ShopUI.cs" type="Script" id=1]
+[ext_resource path="res://Textures/UI/Bux.png" type="Texture" id=2]
+[ext_resource path="res://Textures/UI/ShopUsing.png" type="Texture" id=3]
+[ext_resource path="res://Textures/UI/ShopUI.png" type="Texture" id=4]
+[ext_resource path="res://Textures/UI/ShopBuy.png" type="Texture" id=5]
+[ext_resource path="res://Textures/UI/ShopOwned.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/Kenney Rocket.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Scripts/Misc/MovingTextureRect.cs" type="Script" id=8]
+[ext_resource path="res://Textures/Backgrounds/NightSky.png" type="Texture" id=9]
+[ext_resource path="res://Textures/Backgrounds/DarkSmoke_1.png" type="Texture" id=10]
+[ext_resource path="res://Textures/Backgrounds/BuildingSilhouettes.png" type="Texture" id=11]
+[ext_resource path="res://Textures/Backgrounds/DarkSmoke_2.png" type="Texture" id=12]
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 7 )
+
+[node name="ShopUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+buyTexture = ExtResource( 5 )
+ownedTexture = ExtResource( 6 )
+usingTexture = ExtResource( 3 )
+
+[node name="Background" type="Control" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Moon" type="TextureRect" parent="Background"]
+margin_right = 320.0
+margin_bottom = 180.0
+rect_scale = Vector2( 3.2, 3.34 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuldingSilhouettes" type="TextureRect" parent="Background"]
+margin_right = 320.0
+margin_bottom = 180.0
+rect_scale = Vector2( 3.2, 3.34 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DarkSmoke_1" type="TextureRect" parent="Background"]
+margin_right = 320.0
+margin_bottom = 180.0
+rect_scale = Vector2( 3.2, 3.34 )
+texture = ExtResource( 10 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+moveSpeed = -0.5
+
+[node name="DarkSmoke_1_Child" type="TextureRect" parent="Background/DarkSmoke_1"]
+margin_left = 320.0
+margin_right = 640.0
+margin_bottom = 180.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DarkSmoke_2" type="TextureRect" parent="Background"]
+margin_right = 320.0
+margin_bottom = 180.0
+rect_scale = Vector2( 3.2, 3.34 )
+texture = ExtResource( 12 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+moveSpeed = 0.7
+
+[node name="DarkSmoke_2_Child" type="TextureRect" parent="Background/DarkSmoke_2"]
+margin_left = -320.0
+margin_bottom = 180.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shop" type="TextureRect" parent="."]
+anchor_left = 0.187
+anchor_top = 0.2
+anchor_right = 0.812
+anchor_bottom = 0.8
+margin_left = 160.512
+margin_top = 90.0
+margin_right = -159.488
+margin_bottom = -90.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 160, 90 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PhaserButton" type="TextureButton" parent="Shop"]
+margin_left = 254.0
+margin_top = 52.0
+margin_right = 313.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 3 )
+
+[node name="CostTexture" type="TextureRect" parent="Shop/PhaserButton"]
+margin_left = -22.0
+margin_top = -2.0
+margin_right = 18.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 2, 2 )
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostLabel" type="Label" parent="Shop/PhaserButton/CostTexture"]
+margin_left = -80.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 80, 0 )
+custom_fonts/font = SubResource( 3 )
+text = "Monee"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlasterButton" type="TextureButton" parent="Shop"]
+margin_left = 254.0
+margin_top = 77.0
+margin_right = 313.0
+margin_bottom = 97.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostTexture" type="TextureRect" parent="Shop/BlasterButton"]
+margin_left = -22.0
+margin_top = -1.0
+margin_right = 18.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 2, 2 )
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostLabel" type="Label" parent="Shop/BlasterButton/CostTexture"]
+margin_left = -80.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 80, 0 )
+custom_fonts/font = SubResource( 3 )
+text = "Monee"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BoomerButton" type="TextureButton" parent="Shop"]
+margin_left = 254.0
+margin_top = 100.0
+margin_right = 313.0
+margin_bottom = 120.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostTexture" type="TextureRect" parent="Shop/BoomerButton"]
+margin_left = -22.0
+margin_top = -1.0
+margin_right = 18.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 2, 2 )
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostLabel" type="Label" parent="Shop/BoomerButton/CostTexture"]
+margin_left = -80.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 80, 0 )
+custom_fonts/font = SubResource( 3 )
+text = "Monee"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PhaserRifleButton" type="TextureButton" parent="Shop"]
+margin_left = 254.0
+margin_top = 123.0
+margin_right = 313.0
+margin_bottom = 143.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostTexture" type="TextureRect" parent="Shop/PhaserRifleButton"]
+margin_left = -22.0
+margin_top = -1.0
+margin_right = 18.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 2, 2 )
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostLabel" type="Label" parent="Shop/PhaserRifleButton/CostTexture"]
+margin_left = -80.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 80, 0 )
+custom_fonts/font = SubResource( 3 )
+text = "Monee"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Doom-CannonButton" type="TextureButton" parent="Shop"]
+margin_left = 254.0
+margin_top = 149.0
+margin_right = 313.0
+margin_bottom = 169.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostTexture" type="TextureRect" parent="Shop/Doom-CannonButton"]
+margin_left = -22.0
+margin_top = -2.0
+margin_right = 18.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 2, 2 )
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostLabel" type="Label" parent="Shop/Doom-CannonButton/CostTexture"]
+margin_left = -80.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 80, 0 )
+custom_fonts/font = SubResource( 3 )
+text = "Monee"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoneyCounter" type="TextureRect" parent="."]
+margin_left = 776.0
+margin_top = 136.0
+margin_right = 816.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoneyLabel" type="Label" parent="MoneyCounter"]
+margin_left = -80.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 80, 0 )
+custom_fonts/font = SubResource( 3 )
+text = "Monee"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Shop/PhaserButton" to="." method="OnPhaserButtonPressed"]
+[connection signal="pressed" from="Shop/BlasterButton" to="." method="OnBlasterButtonPressed"]
+[connection signal="pressed" from="Shop/BoomerButton" to="." method="OnBoomerButtonPressed"]
+[connection signal="pressed" from="Shop/PhaserRifleButton" to="." method="OnPhaserRifleButtonPressed"]
+[connection signal="pressed" from="Shop/Doom-CannonButton" to="." method="OnDoomCannonButtonPressed"]

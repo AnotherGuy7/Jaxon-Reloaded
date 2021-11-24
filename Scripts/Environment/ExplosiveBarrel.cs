@@ -39,7 +39,7 @@ public class ExplosiveBarrel : Node2D
 					GoreManager.SpawnGore(goreTextureIndex, spawnPosition, initialVelocity * 30f);
 				}
 				EffectsManager.ShakeCamera(3, 25);
-				SoundManager.PlaySound(SoundManager.Sounds_Exposion, pitchRandom: 30);
+				SoundManager.PlaySound(SoundManager.Sounds_Explosion, pitchRandom: 30);
 				QueueFree();
 			}
 		}

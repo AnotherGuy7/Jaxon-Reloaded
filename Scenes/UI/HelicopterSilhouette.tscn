@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Misc/MovingTextureRect.cs" type="Script" id=1]
+[ext_resource path="res://Textures/Misc/HelicopterSilhouette.png" type="Texture" id=2]
+
+[node name="HelicopterSilhouette" type="TextureRect"]
+margin_right = 11.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 5.5, 3.5 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+moveSpeed = 1.7

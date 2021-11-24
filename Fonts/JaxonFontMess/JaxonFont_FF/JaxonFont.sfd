@@ -1,0 +1,249 @@
+SplineFontDB: 3.2
+FontName: JaxonFont
+FullName: JaxonFont
+FamilyName: JaxonFont
+Weight: Regular
+Copyright: Copyright (c) 2021, JaxonDevs
+UComments: "2021-11-20: Created with FontForge (http://fontforge.org)"
+Version: 001.000
+ItalicAngle: 0
+UnderlinePosition: -100
+UnderlineWidth: 50
+Ascent: 800
+Descent: 200
+InvalidEm: 0
+LayerCount: 2
+Layer: 0 0 "Back" 1
+Layer: 1 0 "Fore" 1
+XUID: [1021 486 389970369 23768]
+OS2Version: 0
+OS2_WeightWidthSlopeOnly: 0
+OS2_UseTypoMetrics: 1
+CreationTime: 1637427967
+ModificationTime: 1637431457
+OS2TypoAscent: 0
+OS2TypoAOffset: 1
+OS2TypoDescent: 0
+OS2TypoDOffset: 1
+OS2TypoLinegap: 0
+OS2WinAscent: 0
+OS2WinAOffset: 1
+OS2WinDescent: 0
+OS2WinDOffset: 1
+HheadAscent: 0
+HheadAOffset: 1
+HheadDescent: 0
+HheadDOffset: 1
+OS2Vendor: 'PfEd'
+MarkAttachClasses: 1
+DEI: 91125
+Encoding: ISO8859-1
+UnicodeInterp: none
+NameList: AGL For New Fonts
+DisplaySize: -48
+AntiAlias: 1
+FitToEm: 0
+WinInfo: 0 27 9
+BeginPrivate: 0
+EndPrivate
+Grid
+16 1300 m 0
+ 16 -700 l 1024
+  Spiro
+    16 1300 {
+    16 -700 o
+    0 0 z
+  EndSpiro
+  Named: "16 line"
+-1000 784.053089489 m 0
+ 2000 784.053089489 l 1024
+  Spiro
+    -1000 784.053 {
+    2000 784.053 o
+    0 0 z
+  EndSpiro
+  Named: "16 line"
+EndSplineSet
+BeginChars: 256 4
+
+StartChar: A
+Encoding: 65 65 0
+Width: 1001
+Flags: HMW
+LayerCount: 2
+Back
+Image2: image/png 144 0 800 1 1
+M,6r;%14!\!!!!.8Ou6I!!!!1!!!!1#R18/!$Ch4@/p9-=%PeG<&bJ"AAAZRUId27n\JHWCkC.J
+"5/_$!d$W]%[sm-QYfjD.<Ya2#/C<Cb/!:9,XiR@'Y@c2%7'J*38oDc8-klA_r1%dMR*Ta!@SI[
+:U(]9r\5,hN$?2pz8OZBBY!QNJ
+EndImage2
+SplineSet
+1 784.052734375 m 29
+ 1 786 l 25
+ 2 786 l 25
+ 2 789 l 25
+ 3 789 l 25
+ 3 793 l 25
+ 4 793 l 25
+ 4 796 l 25
+ 5 796 l 25
+ 5 798 l 25
+ 6 798 l 25
+ 6 800 l 25
+ 10 800 l 25
+ 10 798 l 25
+ 11 798 l 25
+ 11 796 l 25
+ 12 796 l 25
+ 12 793 l 25
+ 13 793 l 25
+ 13 789 l 25
+ 14 789 l 25
+ 14 786 l 25
+ 15 786 l 25
+ 15 784 l 9
+ 13 784.053089489 l 25
+ 13 786 l 25
+ 12 786 l 25
+ 12 789 l 25
+ 11 789 l 25
+ 11 793 l 25
+ 10 793 l 25
+ 10 796 l 25
+ 9 796 l 25
+ 9 798 l 25
+ 7 798 l 25
+ 7 796 l 25
+ 6 796 l 25
+ 6 793 l 25
+ 5 793 l 25
+ 5 789 l 25
+ 4 789 l 25
+ 4 786 l 25
+ 3 786 l 25
+ 3 784.053089489 l 25
+ 1 784.052734375 l 29
+8 800 m 1025
+  Spiro
+    3 793 v
+    4 796 v
+    8 800 v
+    12 796 v
+    13 792 v
+    15 784 v
+    8 796 v
+    1 784.053 v
+    0 0 z
+  EndSpiro
+1 784.052734375 m 1025
+8 800 m 1024
+  Spiro
+    8 800 {
+    0 0 z
+  EndSpiro
+EndSplineSet
+EndChar
+
+StartChar: B
+Encoding: 66 66 1
+Width: 1000
+Flags: H
+LayerCount: 2
+Back
+Image2: image/png 163 0 800 1 1
+M,6r;%14!\!!!!.8Ou6I!!!!1!!!!1#R18/!$Ch4@/p9-C.UfZ<&bK/O\62"+:(B/l2@f%;sQ4[
+&l"8lh;Aj7&%Xp%[/.0iK*Ra8[0si>"$GURp7Cf5!tiWdLqETgjEWCJ/.M[KCcT?M'KU=!7u63T
+2[\5YKIm>fY>JDj1aV3"e@4*:#hoNPAI'D_r%aN;!!!!j78?7R6=>BF
+EndImage2
+Fore
+SplineSet
+13 793 m 5
+ 15 793 l 5
+ 15 791 l 5
+ 13 791 l 5
+ 13 793 l 5
+15 793 m 1
+ 15 791 l 1025
+15 793 m 25
+ 15 798 l 1
+ 14 798 l 25
+ 14 799 l 25
+ 13 799 l 25
+ 13 800 l 25
+ 1 800 l 25
+ 1 784.053089489 l 25
+ 13 784.053089489 l 25
+ 13 785 l 25
+ 14 785 l 25
+ 14 786 l 25
+ 15 786 l 1
+ 15 789 l 1
+ 15 791 l 1025
+13 793 m 25
+ 3 793 l 1
+ 3 798 l 25
+ 12 798 l 25
+ 12 797 l 25
+ 13 797 l 1
+ 13 793 l 1049
+13 791 m 25
+ 13 787 l 1
+ 12 787 l 25
+ 12 786 l 25
+ 3 786 l 25
+ 3 791 l 1
+ 13 791 l 1049
+EndSplineSet
+EndChar
+
+StartChar: C
+Encoding: 67 67 2
+Width: 997
+Flags: H
+LayerCount: 2
+Back
+Image2: image/png 142 0 800 1 1
+M,6r;%14!\!!!!.8Ou6I!!!!1!!!!1#R18/!$Ch4@/p9-<CoSE<&bKW;F(Wi+:-H[s'IAc2p`,3
+ZX%[r9ou@L[ld?HiWi1X#T]p?FB2fekQc-:1jC>\Jr<)R:o;u4Ui5aPK+m>ck87cB]Ga4Ng&tCX
+l8Bli#9p:,R8j4e!!#SZ:.26O@"J@Y
+EndImage2
+Fore
+SplineSet
+13 787 m 29
+ 13 786 l 25
+ 3 786 l 25
+ 3 798 l 25
+ 13 798 l 25
+ 13 797 l 25
+ 15 797 l 25
+ 15 799 l 25
+ 13 799 l 25
+ 13 800 l 25
+ 3 800 l 25
+ 3 799 l 25
+ 1 799 l 25
+ 1 785 l 25
+ 3 785 l 25
+ 3 784.053089489 l 25
+ 13 784.053089489 l 25
+ 13 785 l 25
+ 15 785 l 25
+ 15 787 l 25
+ 13 787 l 29
+EndSplineSet
+EndChar
+
+StartChar: D
+Encoding: 68 68 3
+Width: 1000
+Flags: HW
+LayerCount: 2
+Back
+Image2: image/png 120 0 800 1 1
+M,6r;%14!\!!!!.8Ou6I!!!!1!!!!1#R18/!$Ch4@/p9-5=n7/<&bJ"A:T41:mtLD&Z1Wr`ZUU[
+6.6)u),2*A$Ze$I`@_ubJ:V,c$jK'9^sYCtD54"S>^Vo&b+fOK-TD2PXFj=:z8OZBBY!QNJ
+
+EndImage2
+EndChar
+EndChars
+EndSplineFont

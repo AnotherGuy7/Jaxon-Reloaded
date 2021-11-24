@@ -20,7 +20,7 @@ public class LootManager : Node2D
 
 	public static void SpawnLoot(int lootType, Vector2 position, int dropChance)
 	{
-		if (EffectsManager.random.Next(0, 100 + 1) > dropChance)
+		if (EffectsManager.environmentNodeLoaded && EffectsManager.random.Next(0, 100 + 1) > dropChance)
 			return;
 
 		Node2D loot = (Node2D)lootManager.coins[lootType].Instance();

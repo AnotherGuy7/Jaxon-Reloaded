@@ -11,12 +11,15 @@ public class GoreManager : Node2D
 	public static CanvasLayer goreLayer;
 	public static GoreManager goreManager;
 
-	public const int AmountOfGore = 5;
+	public const int AmountOfGore = 8;
 	public const int Gore_Barrel1 = 0;
 	public const int Gore_Barrel2 = 1;
 	public const int Gore_Barrel3 = 2;
 	public const int Gore_Drone1 = 3;
 	public const int Gore_Drone2 = 4;
+	public const int Gore_CityGuard1 = 5;
+	public const int Gore_CityGuard2 = 6;
+	public const int Gore_CityGuard3 = 7;
 
 	public override void _Ready()
 	{

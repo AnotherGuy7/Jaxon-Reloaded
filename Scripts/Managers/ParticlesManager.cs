@@ -190,6 +190,29 @@ public class ParticlesManager : Node2D
 		timer.Start(particleTime);
 	}
 
+	public static void AttachParticles(Node2D node, int particleType, Color particleColor, float particleTime)
+	{
+		Particles2D particles = (Particles2D)particlesManager.emptyParticleEmmitter.Instance();
+		particles.Amount = particlesManager.particleNodes[particleType].Amount;
+		particles.Lifetime = particlesManager.particleNodes[particleType].Lifetime;
+		particles.OneShot = particlesManager.particleNodes[particleType].OneShot;
+		particles.ProcessMaterial = particlesManager.particleNodes[particleType].ProcessMaterial;
+		particles.LocalCoords = particlesManager.particleNodes[particleType].LocalCoords;
+		particles.Modulate = particleColor;
+		particles.Emitting = true;
+
+		particleLayer.AddChild(particles);
+		activeAttatchedParticles.Add(particles);
+		attatchedNodes.Add(particles.Name, node);
+		nodeActive.Add(particles.Name, true);
+
+		Timer timer = new Timer();
+		timer.Name = "ParticleTimer";
+		particles.AddChild(timer);
+		timer.OneShot = true;
+		timer.Start(particleTime);
+	}
+
 	public static void SpawnUnattatchedParticles(int particleType, Vector2 position, float particleTime, float scale = 1f, bool oneshot = false)
 	{
 		Particles2D particles = (Particles2D)particlesManager.emptyParticleEmmitter.Instance();
@@ -200,6 +223,30 @@ public class ParticlesManager : Node2D
 		particles.GlobalPosition = position;
 		particles.Scale = new Vector2(scale, scale);
 		particles.OneShot = oneshot;
+		particles.Emitting = true;
+
+
+		particleLayer.AddChild(particles);
+		activeUnattatchedParticles.Add(particles);
+
+		Timer timer = new Timer();
+		timer.Name = "ParticleTimer";
+		particles.AddChild(timer);
+		timer.OneShot = true;
+		timer.Start(particleTime);
+	}
+
+	public static void SpawnUnattatchedParticles(int particleType, Vector2 position, Color particleColor, float particleTime, float scale = 1f, bool oneshot = false)
+	{
+		Particles2D particles = (Particles2D)particlesManager.emptyParticleEmmitter.Instance();
+		particles.Amount = particlesManager.particleNodes[particleType].Amount;
+		particles.Lifetime = particlesManager.particleNodes[particleType].Lifetime;
+		particles.OneShot = particlesManager.particleNodes[particleType].OneShot;
+		particles.ProcessMaterial = particlesManager.particleNodes[particleType].ProcessMaterial;
+		particles.GlobalPosition = position;
+		particles.Scale = new Vector2(scale, scale);
+		particles.OneShot = oneshot;
+		particles.Modulate = particleColor;
 		particles.Emitting = true;
 
 

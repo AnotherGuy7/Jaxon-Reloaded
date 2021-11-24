@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Managers/GoreManager.cs" type="Script" id=1]
 [ext_resource path="res://Textures/Gore/Barrel_3.png" type="Texture" id=2]
@@ -7,11 +7,14 @@
 [ext_resource path="res://Scenes/Environment/Gore.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Textures/Gore/Drone_1.png" type="Texture" id=6]
 [ext_resource path="res://Textures/Gore/Drone_2.png" type="Texture" id=7]
+[ext_resource path="res://Textures/Gore/CityGuard_3.png" type="Texture" id=8]
+[ext_resource path="res://Textures/Gore/CityGuard_2.png" type="Texture" id=9]
+[ext_resource path="res://Textures/Gore/CityGuard_1.png" type="Texture" id=10]
 
 [node name="GoreManager" type="Node2D"]
 script = ExtResource( 1 )
 emptyGoreParticle = ExtResource( 5 )
-textures = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 7 ) ]
+textures = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 8 ) ]
 
 [node name="GoreLayer" type="CanvasLayer" parent="."]
 follow_viewport_enable = true

@@ -6,8 +6,11 @@ public class ProjectileManager : Node2D
 	public Node2D projectileNode;
 	public static ProjectileManager projectileManager;
 
-	public const int Projectile_PlayerBullet = 0;
-	public const int Projectile_EnemyLaser = 1;
+	public const int Projectile_PlayerBullet_Yellow = 0;
+	public const int Projectile_PlayerBullet_Orange = 1;
+	public const int Projectile_PlayerBullet_Blue = 2;
+	public const int Projectile_PlayerBullet_Green = 3;
+	public const int Projectile_EnemyLaser = 4;
 
 	[Export]
 	public PackedScene[] projectiles;
@@ -15,6 +18,13 @@ public class ProjectileManager : Node2D
 	public override void _Ready()
 	{
 		projectileManager = this;
+	}
+
+	public static void AttemptSetProjectileNode()
+	{
+		SceneTree sceneTree = projectileManager.GetTree();
+		if (IsInstanceValid(sceneTree.CurrentScene.GetNodeOrNull<Node2D>("ProjectileNode")))
+			projectileManager.projectileNode = projectileManager.GetTree().CurrentScene.GetNode<Node2D>("ProjectileNode");
 	}
 
 	public void SetProjectileNode()

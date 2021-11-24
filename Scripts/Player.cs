@@ -9,6 +9,8 @@ public class Player : KinematicBody2D
 	private const float FloorGravity = 0.3f;
 	private const float FinalForceMultiplier = 15f;
 	private const float SwordDamage = 12;
+	private const int BlasterConeSpread = 7;		//Spread in degrees
+	private const int BoomerConeSpread = 18;
 	public const int MaxHealth = 7;
 	private readonly Vector2 GravityDefinition = new Vector2(0, -1);
 
@@ -20,7 +22,8 @@ public class Player : KinematicBody2D
 	private Area2D swordArea;
 	private AudioStreamPlayer stepSound;
 	private AudioStreamPlayer shootSound;
-	private AudioStreamPlayer hurtSound;
+	private AudioStreamPlayer hurtSound1;
+	private AudioStreamPlayer hurtSound2;
 	public static Camera2D playerCam;
 
 	private float gunRotationOffset;
@@ -30,17 +33,38 @@ public class Player : KinematicBody2D
 	private FightingStyle fightingStyle;
 	private Direction direction;
 	private bool playerSwinging = false;
-	private int lastSwingFrame = 0;
 	private int immunityTimer = 0;
 	private int flashTimer = 0;
 
 	[Export]
 	public AudioStream[] stepSounds;
 
+	[Export]
+	public Texture[] armTextures;
+
+	[Export]
+	public AudioStream[] shootSounds;
+	private float[] shootSoundPitches = new float[AmountOfGuns] { 1.8f, 1.2f, 1f, 1f, 1f };
+	private float[] shootSoundVolumes = new float[AmountOfGuns] { 0f, -5f, -3f, -9f, 0f };
+
 	public static int playerHealth = MaxHealth;
 	public static Player player;
 	public static Vector2 position;
-	public static int playerMoney;
+	public static int playerMoney = 12000;
+	public static bool[] gunUnlocked = new bool[AmountOfGuns] { true, false, false, false, false };
+	public static int activeGun = Gun_Phaser;
+
+	public const int AmountOfGuns = 5;
+	public const int Gun_Phaser = 0;
+	public const int Gun_Blaster = 1;
+	public const int Gun_Boomer = 2;
+	public const int Gun_PhaseRifle = 3;
+	public const int Gun_DoomCannon = 4;
+
+	private readonly Color yellowBulletColor = new Color(0.95f, 0.9f, 0.59f);
+	private readonly Color orangeBulletColor = new Color(1f, 0.62f, 0.18f);
+	private readonly Color blueBulletColor = new Color(0.18f, 0.53f, 1f);
+	private readonly Color greenBulletColor = new Color(0.18f, 1f, 0.24f);
 
 	private AnimationState animationState;
 	private HelperMethods.CollisionType collisionType = HelperMethods.CollisionType.Player;
@@ -76,8 +100,14 @@ public class Player : KinematicBody2D
 		playerGun = GetNode<Sprite>("PlayerGun");
 		swordArea = GetNode<Area2D>("SwordArea");
 		stepSound = GetNode<AudioStreamPlayer>("StepSound");
-		shootSound = GetNode<AudioStreamPlayer>("PistolShootSound");
-		hurtSound = GetNode<AudioStreamPlayer>("HurtSound");
+		shootSound = GetNode<AudioStreamPlayer>("ShootSound");
+		hurtSound1 = GetNode<AudioStreamPlayer>("HurtSound_1");
+		hurtSound2 = GetNode<AudioStreamPlayer>("HurtSound_2");
+
+		playerGun.Texture = armTextures[activeGun];
+		shootSound.Stream = shootSounds[activeGun];
+		shootSound.PitchScale = shootSoundPitches[activeGun];
+		shootSound.VolumeDb = shootSoundVolumes[activeGun];
 	}
 
 	public override void _Process(float delta)
@@ -264,12 +294,53 @@ public class Player : KinematicBody2D
 
 		if (shootTimer <= 0 && Input.IsMouseButtonPressed((int)ButtonList.Left))
 		{
-			shootTimer += 15;
 			shootSound.Play();
+			shootSound.PitchScale = shootSoundPitches[activeGun] + (EffectsManager.random.Next(-2, 2 + 1) / 10f);
 			Vector2 shootPosition = GlobalPosition + playerGun.Position + (normalizedMouseVector * 36f);
-			Node2D projectile = ProjectileManager.NewProjectile(ProjectileManager.Projectile_PlayerBullet, 6, shootPosition, normalizedMouseVector * 8f, HelperMethods.CollisionType.Enemies);
-			ParticlesManager.AttachParticles(projectile, ParticlesManager.BulletParticles, 3);
+			Vector2 shootVector = normalizedMouseVector * 8f; 
+			switch (activeGun)
+			{
+				case Gun_Phaser:
+					shootTimer += 15;
+					Node2D phaserProjectile = ProjectileManager.NewProjectile(ProjectileManager.Projectile_PlayerBullet_Yellow, 3, shootPosition, shootVector, HelperMethods.CollisionType.Enemies);
+					ParticlesManager.AttachParticles(phaserProjectile, ParticlesManager.BulletParticles, yellowBulletColor, 3);
+					break;
 
+				case Gun_Blaster:
+					shootTimer += 4;
+					float blasterShootVectorX = (float)Math.Cos(normalizedMouseVector.Angle() + Mathf.Deg2Rad(EffectsManager.random.Next(-BlasterConeSpread, BlasterConeSpread + 1)));
+					float blasterShootVectorY = (float)Math.Sin(normalizedMouseVector.Angle() + Mathf.Deg2Rad(EffectsManager.random.Next(-BlasterConeSpread, BlasterConeSpread + 1)));
+					shootVector = new Vector2(blasterShootVectorX, blasterShootVectorY) * 8f;
+
+					Node2D blasterProjectile = ProjectileManager.NewProjectile(ProjectileManager.Projectile_PlayerBullet_Orange, 5, shootPosition, shootVector, HelperMethods.CollisionType.Enemies);
+					ParticlesManager.AttachParticles(blasterProjectile, ParticlesManager.BulletParticles, orangeBulletColor, 3);
+					break;
+
+				case Gun_Boomer:
+					shootTimer += 25;
+					int amountOfBoomerBullets = 5;
+					for (int i = 0; i < amountOfBoomerBullets; i++)
+					{
+						float angleSpread = (((i - 2) / 2.5f) * BoomerConeSpread);
+						float shootVectorX = (float)Math.Cos(normalizedMouseVector.Angle() + Mathf.Deg2Rad(angleSpread));
+						float shootVectorY = (float)Math.Sin(normalizedMouseVector.Angle() + Mathf.Deg2Rad(angleSpread));
+						shootVector = new Vector2(shootVectorX, shootVectorY).Normalized() * 8f;
+
+						Node2D boomerProjectile = ProjectileManager.NewProjectile(ProjectileManager.Projectile_PlayerBullet_Blue, 13, shootPosition, shootVector, HelperMethods.CollisionType.Enemies);
+						ParticlesManager.AttachParticles(boomerProjectile, ParticlesManager.BulletParticles, blueBulletColor, 3);
+					}
+					break;
+
+				case Gun_PhaseRifle:
+					shootTimer += 8;
+					Node2D rifleProjectile = ProjectileManager.NewProjectile(ProjectileManager.Projectile_PlayerBullet_Green, 7, shootPosition, shootVector, HelperMethods.CollisionType.Enemies);
+					ParticlesManager.AttachParticles(rifleProjectile, ParticlesManager.BulletParticles, greenBulletColor, 3);
+					break;
+
+				case Gun_DoomCannon:
+					break;
+
+		}
 			ParticlesManager.SpawnUnattatchedParticles(ParticlesManager.ShootParticles, shootPosition, 5, oneshot: true);
 		}
 	}
@@ -309,7 +380,7 @@ public class Player : KinematicBody2D
 		{
 			playerGun.FlipH = true;
 			playerGun.Position = new Vector2(-2.5f, -7f);
-			playerGun.Offset = new Vector2(-30f, -5f);
+			playerGun.Offset = new Vector2(-39f, -9f);
 			gunRotationOffset = (float)Math.PI;
 			swordArea.Scale = new Vector2(-1, 1f);
 		}
@@ -317,7 +388,7 @@ public class Player : KinematicBody2D
 		{
 			playerGun.FlipH = false;
 			playerGun.Position = new Vector2(2.5f, -7f);
-			playerGun.Offset = new Vector2(0f, -5f);
+			playerGun.Offset = new Vector2(0f, -9f);
 			gunRotationOffset = 0f;
 			swordArea.Scale = new Vector2(1, 1f);
 		}
@@ -348,7 +419,11 @@ public class Player : KinematicBody2D
 
 		playerHealth -= 1;
 		immunityTimer = 35;
-		hurtSound.Play();
 		EffectsManager.ShakeCamera(3, 10);
+
+		if (EffectsManager.random.Next(0, 1 + 1) == 0)
+			hurtSound1.Play();
+		else
+			hurtSound2.Play();
 	}
 }

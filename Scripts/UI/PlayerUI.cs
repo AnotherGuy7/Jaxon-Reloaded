@@ -34,7 +34,7 @@ public class PlayerUI : Control
 			}
 		}
 		
-		moneyLabel.Text = Player.playerMoney + ":";
+		moneyLabel.Text = Player.playerMoney.ToString();
 	}
 
 	/*private void DrawHealthBarTicks(Control node)		//Draws are just busted

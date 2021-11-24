@@ -8,7 +8,15 @@ public class Coins : AnimatedSprite
 	
 	private int floatTimer = 0;
 	private bool particlesAttatched = false;
-	
+	private bool falling = false;
+
+	private AudioStreamPlayer coinPickupSound;
+
+	public override void _Ready()
+	{
+		coinPickupSound = GetNode<AudioStreamPlayer>("CoinPickupSound");
+	}
+
 	public override void _PhysicsProcess(float delta)
 	{
 		floatTimer++;
@@ -21,7 +29,9 @@ public class Coins : AnimatedSprite
 			//ParticlesManager.AttachParticles(this, ParticlesManager.LaserParticles, 5 * 60);
 		}
 			
-		float yVelocity = (float)Math.Sin(floatTimer * 3f) * 0.5f;
+		float yVelocity = (float)Math.Sin(Mathf.Deg2Rad(floatTimer) * 2);
+		if (falling)
+			yVelocity = 1.5f;
 		MoveLocalY(yVelocity);
 	}
 	
@@ -29,8 +39,11 @@ public class Coins : AnimatedSprite
 	{
 		if (body == Player.player)
 		{
+			coinPickupSound.Play();
 			Player.playerMoney += coinValue;
 			QueueFree();
 		}
+		if (body is StaticBody2D)
+			falling = false;
 	}
 }

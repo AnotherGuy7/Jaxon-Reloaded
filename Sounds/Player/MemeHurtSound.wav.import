@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MemeHurtSound.wav-1daa6b618d304567237f94985017aeba.sample"
+
+[deps]
+
+source_file="res://Sounds/Player/MemeHurtSound.wav"
+dest_files=[ "res://.import/MemeHurtSound.wav-1daa6b618d304567237f94985017aeba.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

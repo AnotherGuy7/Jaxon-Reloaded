@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/HurtSound_1.wav-8c6aded07d2e8d6f3ba401f9a15fddab.sample"
+
+[deps]
+
+source_file="res://Sounds/Player/HurtSound_1.wav"
+dest_files=[ "res://.import/HurtSound_1.wav-8c6aded07d2e8d6f3ba401f9a15fddab.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

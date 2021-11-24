@@ -1,15 +1,23 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/Player.cs" type="Script" id=1]
 [ext_resource path="res://Textures/SpriteFrames/Player.tres" type="SpriteFrames" id=2]
-[ext_resource path="res://Textures/Player/Gun.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Player/Arm_Phaser.png" type="Texture" id=3]
 [ext_resource path="res://Sounds/Player/Step_2.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/Player/Step_1.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/Player/Step_3.wav" type="AudioStream" id=6]
 [ext_resource path="res://Sounds/Player/Step_4.wav" type="AudioStream" id=7]
 [ext_resource path="res://Sounds/Player/PistolShootSound.wav" type="AudioStream" id=8]
 [ext_resource path="res://Scenes/UI/PlayerUI.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Sounds/Player/HurtSound.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sounds/Player/HurtSound_1.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sounds/Player/HurtSound_2.wav" type="AudioStream" id=11]
+[ext_resource path="res://Textures/Player/Arm_Blaster.png" type="Texture" id=12]
+[ext_resource path="res://Textures/Player/Arm_Boomer.png" type="Texture" id=13]
+[ext_resource path="res://Textures/Player/Arm_PhaseRifle.png" type="Texture" id=14]
+[ext_resource path="res://Textures/Player/Arm_DoomCannon.png" type="Texture" id=15]
+[ext_resource path="res://Sounds/Player/BoomerShootSound.wav" type="AudioStream" id=16]
+[ext_resource path="res://Sounds/Player/PhaseRifleShootSound_Old.wav" type="AudioStream" id=17]
+[ext_resource path="res://Sounds/Player/BlasterShootSound.wav" type="AudioStream" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 26 )
@@ -23,12 +31,14 @@ __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
 stepSounds = [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ) ]
+armTextures = [ ExtResource( 3 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ]
+shootSounds = [ ExtResource( 8 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 17 ) ]
 
 [node name="PlayerGun" type="Sprite" parent="."]
 position = Vector2( 2.5, -7 )
 texture = ExtResource( 3 )
 centered = false
-offset = Vector2( 0, -5 )
+offset = Vector2( 0, -9 )
 
 [node name="GunBarrel" type="Position2D" parent="PlayerGun"]
 position = Vector2( 26, -2 )
@@ -55,14 +65,15 @@ shape = SubResource( 2 )
 stream = ExtResource( 4 )
 volume_db = -5.0
 
-[node name="PistolShootSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
-pitch_scale = 1.8
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
 
-[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+[node name="HurtSound_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-volume_db = 24.0
-pitch_scale = 2.0
+volume_db = -10.0
+
+[node name="HurtSound_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -6.0
 
 [node name="PlayerUI" parent="." instance=ExtResource( 9 )]
 

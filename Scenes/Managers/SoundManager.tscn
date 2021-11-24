@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Managers/SoundManager.cs" type="Script" id=1]
 [ext_resource path="res://Sounds/Ambience/BackgroundWind.wav" type="AudioStream" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Sounds/Impacts/Impact_Metal.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/Environment/Explosion.wav" type="AudioStream" id=6]
 [ext_resource path="res://Sounds/Ambience/RandomSound_3.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/Environment/BigExplosion.wav" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/Impacts/BulletImpact.wav" type="AudioStream" id=9]
 
 [node name="SoundManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -29,4 +31,12 @@ pitch_scale = 1.5
 
 [node name="ExplosionSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 6 )
+volume_db = -7.0
+
+[node name="BigExplosionSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 8 )
+volume_db = -7.0
+
+[node name="BasicImpactSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 9 )
 volume_db = -7.0

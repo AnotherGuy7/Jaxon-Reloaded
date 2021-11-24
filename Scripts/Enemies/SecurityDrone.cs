@@ -79,7 +79,7 @@ public class SecurityDrone : RigidBody2D
 			EffectsManager.ShakeCamera(3, 5);
 
 			ParticlesManager.SpawnUnattatchedParticles(ParticlesManager.SmokeParticles, GlobalPosition, 5f, oneshot: true);
-			SoundManager.PlaySound(SoundManager.Sounds_Exposion, 6f, 30);
+			SoundManager.PlaySound(SoundManager.Sounds_Explosion, 6f, 30);
 			LootManager.SpawnCoins(3, GlobalPosition);
 			QueueFree();
 		}

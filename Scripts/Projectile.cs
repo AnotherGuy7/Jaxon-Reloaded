@@ -46,6 +46,7 @@ public class Projectile : Area2D
 				node.Call("Hurt", damage);
 			}
 
+			SoundManager.PlaySound(SoundManager.Sound_BasicImpact, 0.8f, 80);
 			QueueFree();
 			return;
 		}

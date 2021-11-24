@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Jaxon Reloaded"
-run/main_scene="res://Scenes/Maps/TestScene.tscn"
+run/main_scene="res://Scenes/UI/TitleScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -22,6 +22,13 @@ GoreManager="*res://Scenes/Managers/GoreManager.tscn"
 EffectsManager="*res://Scenes/Managers/EffectsManager.tscn"
 SoundManager="*res://Scenes/Managers/SoundManager.tscn"
 LootManager="*res://Scenes/Managers/LootManager.tscn"
+ScenesHolder="*res://Scenes/Managers/ScenesHolder.tscn"
+Transitions="*res://Scenes/Managers/Transitions.tscn"
+
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [importer_defaults]
 
