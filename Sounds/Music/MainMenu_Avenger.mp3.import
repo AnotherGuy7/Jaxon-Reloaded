@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/MainMenu_Avenger.mp3-bd986f91b3432b663591b39aa3d4c527.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/MainMenu_Avenger.mp3"
+dest_files=[ "res://.import/MainMenu_Avenger.mp3-bd986f91b3432b663591b39aa3d4c527.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

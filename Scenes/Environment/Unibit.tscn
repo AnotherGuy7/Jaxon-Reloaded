@@ -31,6 +31,7 @@ frame = 7
 playing = true
 script = ExtResource( 11 )
 coinValue = 1
+uiColor = Color( 0.188235, 0.823529, 0.905882, 1 )
 
 [node name="PickupArea" type="Area2D" parent="."]
 

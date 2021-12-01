@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Managers/ParticlesManager.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Misc/EmptyParticle.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Materials/SmokeMaterial.tres" type="Material" id=6]
 [ext_resource path="res://Materials/DustMaterial.tres" type="Material" id=7]
 [ext_resource path="res://Textures/Particles/Particle_1.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Misc/Explosion.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
@@ -58,6 +59,7 @@ hue_variation_random = 0.14
 [node name="ParticlesManager" type="Node2D"]
 script = ExtResource( 1 )
 emptyParticleEmmitter = ExtResource( 2 )
+explosionScene = ExtResource( 9 )
 
 [node name="BulletParticles" type="Particles2D" parent="."]
 visible = false

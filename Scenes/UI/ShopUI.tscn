@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/UI/ShopUI.cs" type="Script" id=1]
 [ext_resource path="res://Textures/UI/Bux.png" type="Texture" id=2]
 [ext_resource path="res://Textures/UI/ShopUsing.png" type="Texture" id=3]
-[ext_resource path="res://Textures/UI/ShopUI.png" type="Texture" id=4]
+[ext_resource path="res://Textures/UI/ShopUI_Empty.png" type="Texture" id=4]
 [ext_resource path="res://Textures/UI/ShopBuy.png" type="Texture" id=5]
 [ext_resource path="res://Textures/UI/ShopOwned.png" type="Texture" id=6]
 [ext_resource path="res://Fonts/Kenney Rocket.ttf" type="DynamicFontData" id=7]
@@ -12,6 +12,12 @@
 [ext_resource path="res://Textures/Backgrounds/DarkSmoke_1.png" type="Texture" id=10]
 [ext_resource path="res://Textures/Backgrounds/BuildingSilhouettes.png" type="Texture" id=11]
 [ext_resource path="res://Textures/Backgrounds/DarkSmoke_2.png" type="Texture" id=12]
+[ext_resource path="res://Textures/UI/ShopUI_Guns.png" type="Texture" id=13]
+[ext_resource path="res://Textures/UI/ShopUI_Enchancements.png" type="Texture" id=14]
+[ext_resource path="res://Textures/UI/ShopUI_EnchancementsPanel.png" type="Texture" id=15]
+[ext_resource path="res://Textures/UI/ShopUI_GunsPanel.png" type="Texture" id=16]
+[ext_resource path="res://Textures/UI/ShopNext.png" type="Texture" id=17]
+[ext_resource path="res://Textures/UI/EnchancementPoint.png" type="Texture" id=18]
 
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 7 )
@@ -28,8 +34,8 @@ ownedTexture = ExtResource( 6 )
 usingTexture = ExtResource( 3 )
 
 [node name="Background" type="Control" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -100,21 +106,34 @@ margin_left = 160.512
 margin_top = 90.0
 margin_right = -159.488
 margin_bottom = -90.0
-rect_scale = Vector2( 2, 2 )
+rect_scale = Vector2( 3.2, 3.3 )
 rect_pivot_offset = Vector2( 160, 90 )
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PhaserButton" type="TextureButton" parent="Shop"]
+[node name="WeaponsPanel" type="Panel" parent="Shop"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GunItems" type="TextureRect" parent="Shop/WeaponsPanel"]
+margin_right = 320.0
+margin_bottom = 180.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PhaserButton" type="TextureButton" parent="Shop/WeaponsPanel"]
 margin_left = 254.0
 margin_top = 52.0
 margin_right = 313.0
 margin_bottom = 72.0
 texture_normal = ExtResource( 3 )
 
-[node name="CostTexture" type="TextureRect" parent="Shop/PhaserButton"]
+[node name="CostTexture" type="TextureRect" parent="Shop/WeaponsPanel/PhaserButton"]
 margin_left = -22.0
 margin_top = -2.0
 margin_right = 18.0
@@ -126,7 +145,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CostLabel" type="Label" parent="Shop/PhaserButton/CostTexture"]
+[node name="CostLabel" type="Label" parent="Shop/WeaponsPanel/PhaserButton/CostTexture"]
 margin_left = -80.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 80, 0 )
@@ -137,7 +156,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BlasterButton" type="TextureButton" parent="Shop"]
+[node name="BlasterButton" type="TextureButton" parent="Shop/WeaponsPanel"]
 margin_left = 254.0
 margin_top = 77.0
 margin_right = 313.0
@@ -147,7 +166,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CostTexture" type="TextureRect" parent="Shop/BlasterButton"]
+[node name="CostTexture" type="TextureRect" parent="Shop/WeaponsPanel/BlasterButton"]
 margin_left = -22.0
 margin_top = -1.0
 margin_right = 18.0
@@ -159,7 +178,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CostLabel" type="Label" parent="Shop/BlasterButton/CostTexture"]
+[node name="CostLabel" type="Label" parent="Shop/WeaponsPanel/BlasterButton/CostTexture"]
 margin_left = -80.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 80, 0 )
@@ -170,7 +189,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BoomerButton" type="TextureButton" parent="Shop"]
+[node name="BoomerButton" type="TextureButton" parent="Shop/WeaponsPanel"]
 margin_left = 254.0
 margin_top = 100.0
 margin_right = 313.0
@@ -180,7 +199,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CostTexture" type="TextureRect" parent="Shop/BoomerButton"]
+[node name="CostTexture" type="TextureRect" parent="Shop/WeaponsPanel/BoomerButton"]
 margin_left = -22.0
 margin_top = -1.0
 margin_right = 18.0
@@ -192,7 +211,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CostLabel" type="Label" parent="Shop/BoomerButton/CostTexture"]
+[node name="CostLabel" type="Label" parent="Shop/WeaponsPanel/BoomerButton/CostTexture"]
 margin_left = -80.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 80, 0 )
@@ -203,7 +222,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PhaserRifleButton" type="TextureButton" parent="Shop"]
+[node name="PhaserRifleButton" type="TextureButton" parent="Shop/WeaponsPanel"]
 margin_left = 254.0
 margin_top = 123.0
 margin_right = 313.0
@@ -213,7 +232,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CostTexture" type="TextureRect" parent="Shop/PhaserRifleButton"]
+[node name="CostTexture" type="TextureRect" parent="Shop/WeaponsPanel/PhaserRifleButton"]
 margin_left = -22.0
 margin_top = -1.0
 margin_right = 18.0
@@ -225,7 +244,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CostLabel" type="Label" parent="Shop/PhaserRifleButton/CostTexture"]
+[node name="CostLabel" type="Label" parent="Shop/WeaponsPanel/PhaserRifleButton/CostTexture"]
 margin_left = -80.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 80, 0 )
@@ -236,7 +255,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Doom-CannonButton" type="TextureButton" parent="Shop"]
+[node name="Doom-CannonButton" type="TextureButton" parent="Shop/WeaponsPanel"]
 margin_left = 254.0
 margin_top = 149.0
 margin_right = 313.0
@@ -246,7 +265,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CostTexture" type="TextureRect" parent="Shop/Doom-CannonButton"]
+[node name="CostTexture" type="TextureRect" parent="Shop/WeaponsPanel/Doom-CannonButton"]
 margin_left = -22.0
 margin_top = -2.0
 margin_right = 18.0
@@ -258,7 +277,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CostLabel" type="Label" parent="Shop/Doom-CannonButton/CostTexture"]
+[node name="CostLabel" type="Label" parent="Shop/WeaponsPanel/Doom-CannonButton/CostTexture"]
 margin_left = -80.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 80, 0 )
@@ -269,18 +288,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MoneyCounter" type="TextureRect" parent="."]
-margin_left = 776.0
-margin_top = 136.0
-margin_right = 816.0
-margin_bottom = 160.0
+[node name="EnchancementsPanel" type="Panel" parent="Shop"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -92, 44 )
+
+[node name="EnchancementItems" type="TextureRect" parent="Shop/EnchancementsPanel"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 15 )
+
+[node name="HealthButton" type="TextureButton" parent="Shop/EnchancementsPanel"]
+anchor_left = 0.787
+anchor_top = 0.356
+anchor_right = 0.972
+anchor_bottom = 0.467
+margin_left = 0.159973
+margin_top = -0.0800018
+margin_right = -0.0400085
+margin_bottom = -0.0599976
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostTexture" type="TextureRect" parent="Shop/EnchancementsPanel/HealthButton"]
+margin_left = 40.0
+margin_top = -16.0
+margin_right = 80.0
+margin_bottom = 8.0
 rect_min_size = Vector2( 2, 2 )
+rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MoneyLabel" type="Label" parent="MoneyCounter"]
+[node name="CostLabel" type="Label" parent="Shop/EnchancementsPanel/HealthButton/CostTexture"]
 margin_left = -80.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 80, 0 )
@@ -291,8 +338,246 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Shop/PhaserButton" to="." method="OnPhaserButtonPressed"]
-[connection signal="pressed" from="Shop/BlasterButton" to="." method="OnBlasterButtonPressed"]
-[connection signal="pressed" from="Shop/BoomerButton" to="." method="OnBoomerButtonPressed"]
-[connection signal="pressed" from="Shop/PhaserRifleButton" to="." method="OnPhaserRifleButtonPressed"]
-[connection signal="pressed" from="Shop/Doom-CannonButton" to="." method="OnDoomCannonButtonPressed"]
+[node name="MeleeButton" type="TextureButton" parent="Shop/EnchancementsPanel"]
+anchor_left = 0.789
+anchor_top = 0.601
+anchor_right = 0.973
+anchor_bottom = 0.712
+margin_left = 0.019989
+margin_top = 0.00183105
+margin_right = 0.139984
+margin_bottom = 0.0218201
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostTexture" type="TextureRect" parent="Shop/EnchancementsPanel/MeleeButton"]
+margin_left = 40.0
+margin_top = -16.0
+margin_right = 80.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 2, 2 )
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostLabel" type="Label" parent="Shop/EnchancementsPanel/MeleeButton/CostTexture"]
+margin_left = -80.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 80, 0 )
+custom_fonts/font = SubResource( 3 )
+text = "Monee"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeedButton" type="TextureButton" parent="Shop/EnchancementsPanel"]
+anchor_left = 0.789
+anchor_top = 0.843
+anchor_right = 0.977
+anchor_bottom = 0.955
+margin_left = 0.019989
+margin_top = 0.0781708
+margin_right = -1.14001
+margin_bottom = -0.0818329
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostTexture" type="TextureRect" parent="Shop/EnchancementsPanel/SpeedButton"]
+margin_left = 40.0
+margin_top = -16.0
+margin_right = 80.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 2, 2 )
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostLabel" type="Label" parent="Shop/EnchancementsPanel/SpeedButton/CostTexture"]
+margin_left = -80.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 80, 0 )
+custom_fonts/font = SubResource( 3 )
+text = "Monee"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthTicks" type="Control" parent="Shop/EnchancementsPanel"]
+anchor_left = 0.162
+anchor_top = 0.361
+anchor_right = 0.469
+anchor_bottom = 0.489
+margin_left = 0.16
+margin_top = 0.0199966
+margin_right = -0.0800018
+margin_bottom = -0.0200043
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tick_1" type="TextureRect" parent="Shop/EnchancementsPanel/HealthTicks"]
+margin_left = 8.0
+margin_top = 6.0
+margin_right = 28.0
+margin_bottom = 17.0
+texture = ExtResource( 18 )
+
+[node name="Tick_2" type="TextureRect" parent="Shop/EnchancementsPanel/HealthTicks"]
+margin_left = 40.0
+margin_top = 6.0
+margin_right = 60.0
+margin_bottom = 17.0
+texture = ExtResource( 18 )
+
+[node name="Tick_3" type="TextureRect" parent="Shop/EnchancementsPanel/HealthTicks"]
+margin_left = 70.0
+margin_top = 6.0
+margin_right = 90.0
+margin_bottom = 17.0
+texture = ExtResource( 18 )
+
+[node name="StrengthTicks" type="Control" parent="Shop/EnchancementsPanel"]
+anchor_left = 0.162
+anchor_top = 0.6
+anchor_right = 0.469
+anchor_bottom = 0.728
+margin_left = 0.16
+margin_top = -7.62939e-06
+margin_right = -0.0800018
+margin_bottom = -0.0400085
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tick_1" type="TextureRect" parent="Shop/EnchancementsPanel/StrengthTicks"]
+margin_left = 8.0
+margin_top = 6.0
+margin_right = 28.0
+margin_bottom = 17.0
+texture = ExtResource( 18 )
+
+[node name="Tick_2" type="TextureRect" parent="Shop/EnchancementsPanel/StrengthTicks"]
+margin_left = 40.0
+margin_top = 6.0
+margin_right = 60.0
+margin_bottom = 17.0
+texture = ExtResource( 18 )
+
+[node name="Tick_3" type="TextureRect" parent="Shop/EnchancementsPanel/StrengthTicks"]
+margin_left = 70.0
+margin_top = 6.0
+margin_right = 90.0
+margin_bottom = 17.0
+texture = ExtResource( 18 )
+
+[node name="SpeedTicks" type="Control" parent="Shop/EnchancementsPanel"]
+anchor_left = 0.162
+anchor_top = 0.822
+anchor_right = 0.469
+anchor_bottom = 0.95
+margin_left = 0.16
+margin_top = 0.0399933
+margin_right = -0.0800018
+margin_bottom = -1.52588e-05
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tick_1" type="TextureRect" parent="Shop/EnchancementsPanel/SpeedTicks"]
+margin_left = 8.0
+margin_top = 6.0
+margin_right = 28.0
+margin_bottom = 17.0
+texture = ExtResource( 18 )
+
+[node name="Tick_2" type="TextureRect" parent="Shop/EnchancementsPanel/SpeedTicks"]
+margin_left = 40.0
+margin_top = 6.0
+margin_right = 60.0
+margin_bottom = 17.0
+texture = ExtResource( 18 )
+
+[node name="Tick_3" type="TextureRect" parent="Shop/EnchancementsPanel/SpeedTicks"]
+margin_left = 70.0
+margin_top = 6.0
+margin_right = 90.0
+margin_bottom = 17.0
+texture = ExtResource( 18 )
+
+[node name="GunsButton" type="TextureButton" parent="Shop"]
+margin_left = 1.0
+margin_top = 22.0
+margin_right = 145.0
+margin_bottom = 44.0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnchancementButton" type="TextureButton" parent="Shop"]
+margin_left = 144.0
+margin_top = 22.0
+margin_right = 319.0
+margin_bottom = 44.0
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoneyLabel" type="Label" parent="Shop"]
+anchor_left = 0.547
+anchor_right = 0.906
+anchor_bottom = 0.122
+margin_left = -0.0400085
+margin_top = 2.0
+margin_right = 0.0799866
+margin_bottom = 0.039999
+rect_pivot_offset = Vector2( 80, 0 )
+custom_fonts/font = SubResource( 3 )
+text = "$Monee"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="TextureButton" parent="."]
+anchor_left = 0.923
+anchor_top = 0.043
+anchor_right = 0.978
+anchor_bottom = 0.103
+margin_left = -0.152039
+margin_top = 0.199999
+margin_right = -28.472
+margin_bottom = -17.8
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Shop/WeaponsPanel/PhaserButton" to="." method="OnPhaserButtonPressed"]
+[connection signal="pressed" from="Shop/WeaponsPanel/BlasterButton" to="." method="OnBlasterButtonPressed"]
+[connection signal="pressed" from="Shop/WeaponsPanel/BoomerButton" to="." method="OnBoomerButtonPressed"]
+[connection signal="pressed" from="Shop/WeaponsPanel/PhaserRifleButton" to="." method="OnPhaserRifleButtonPressed"]
+[connection signal="pressed" from="Shop/WeaponsPanel/Doom-CannonButton" to="." method="OnDoomCannonButtonPressed"]
+[connection signal="pressed" from="Shop/EnchancementsPanel/HealthButton" to="." method="OnHealthButtonPressed"]
+[connection signal="pressed" from="Shop/EnchancementsPanel/MeleeButton" to="." method="OnMeleeButtonPressed"]
+[connection signal="pressed" from="Shop/EnchancementsPanel/SpeedButton" to="." method="OnSpeedButtonPressed"]
+[connection signal="pressed" from="Shop/GunsButton" to="." method="OnGunsButtonPressed"]
+[connection signal="pressed" from="Shop/EnchancementButton" to="." method="OnEnchancementButtonPressed"]
+[connection signal="pressed" from="NextButton" to="." method="OnNextButtonPressed"]

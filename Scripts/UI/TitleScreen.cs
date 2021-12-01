@@ -12,12 +12,16 @@ public class TitleScreen : Control
 	private Control backgroundNode;
 	private TextureRect darkSmoke1Node;
 	private TextureRect darkSmoke2Node;
+	private Panel controlsPanel;
 
 	public override void _Ready()
 	{
 		backgroundNode = GetNode<Control>("Background");
 		darkSmoke1Node = GetNode<TextureRect>("Background/DarkSmoke_1");
 		darkSmoke2Node = GetNode<TextureRect>("Background/DarkSmoke_2");
+		controlsPanel = GetNode<Panel>("ControlsPanel");
+
+		MusicManager.PlayMusic(MusicManager.Music_Title);
 	}
 
 	public override void _Process(float delta)
@@ -57,6 +61,11 @@ public class TitleScreen : Control
 		{
 			darkSmoke2Node.RectGlobalPosition = Vector2.Zero;
 		}
+
+		if (Input.IsKeyPressed((int)KeyList.Escape))
+		{
+			controlsPanel.Visible = false;
+		}
 	}
 
 	private void OnStartPressed()
@@ -67,11 +76,9 @@ public class TitleScreen : Control
 	}
 
 
-	private void OnShopPressed()
+	private void OnControlsButtonPressed()
 	{
-		shopPressed = true;
-		startPressed = false;
-		Transitions.FadeIn();
+		controlsPanel.Visible = true;
 	}
 
 

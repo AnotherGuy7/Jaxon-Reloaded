@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/City_NightCrawler.mp3-b1b65d5a477ddc55b6b5d07b5eda5812.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/City_NightCrawler.mp3"
+dest_files=[ "res://.import/City_NightCrawler.mp3-b1b65d5a477ddc55b6b5d07b5eda5812.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

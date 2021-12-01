@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/Player.cs" type="Script" id=1]
 [ext_resource path="res://Textures/SpriteFrames/Player.tres" type="SpriteFrames" id=2]
@@ -16,8 +16,10 @@
 [ext_resource path="res://Textures/Player/Arm_PhaseRifle.png" type="Texture" id=14]
 [ext_resource path="res://Textures/Player/Arm_DoomCannon.png" type="Texture" id=15]
 [ext_resource path="res://Sounds/Player/BoomerShootSound.wav" type="AudioStream" id=16]
-[ext_resource path="res://Sounds/Player/PhaseRifleShootSound_Old.wav" type="AudioStream" id=17]
+[ext_resource path="res://Sounds/Player/PhaseRifleShootSound.wav" type="AudioStream" id=17]
 [ext_resource path="res://Sounds/Player/BlasterShootSound.wav" type="AudioStream" id=18]
+[ext_resource path="res://Textures/Projectiles/LaserBeam.png" type="Texture" id=19]
+[ext_resource path="res://Sounds/Player/DoomCannonShootSound.wav" type="AudioStream" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 26 )
@@ -32,7 +34,7 @@ __meta__ = {
 }
 stepSounds = [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ) ]
 armTextures = [ ExtResource( 3 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ]
-shootSounds = [ ExtResource( 8 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 17 ) ]
+shootSounds = [ ExtResource( 8 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 20 ) ]
 
 [node name="PlayerGun" type="Sprite" parent="."]
 position = Vector2( 2.5, -7 )
@@ -43,19 +45,39 @@ offset = Vector2( 0, -9 )
 [node name="GunBarrel" type="Position2D" parent="PlayerGun"]
 position = Vector2( 26, -2 )
 
+[node name="DoomCannonCast" type="RayCast2D" parent="PlayerGun"]
+cast_to = Vector2( 50, 0 )
+collide_with_areas = true
+
+[node name="DoomCannonLaser1" type="Sprite" parent="PlayerGun"]
+visible = false
+modulate = Color( 1, 0.0980392, 0.0980392, 1 )
+scale = Vector2( 50, 8 )
+texture = ExtResource( 19 )
+centered = false
+offset = Vector2( 0, -0.5 )
+
+[node name="DoomCannonLaser2" type="Sprite" parent="PlayerGun"]
+visible = false
+modulate = Color( 1, 1, 1, 0.764706 )
+scale = Vector2( 50, 4 )
+texture = ExtResource( 19 )
+centered = false
+offset = Vector2( 0, -0.5 )
+
 [node name="PlayerAnim" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 1
-playing = true
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="PlayerCam" type="Camera2D" parent="."]
 current = true
+zoom = Vector2( 0.5, 0.5 )
 
 [node name="SwordArea" type="Area2D" parent="."]
+visible = false
 
 [node name="SwordHitbox" type="CollisionShape2D" parent="SwordArea"]
 position = Vector2( 28.875, 0 )

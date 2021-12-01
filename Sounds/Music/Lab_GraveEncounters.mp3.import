@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Lab_GraveEncounters.mp3-09ce1c06d8cb17ab287c1b54bc1147f2.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/Lab_GraveEncounters.mp3"
+dest_files=[ "res://.import/Lab_GraveEncounters.mp3-09ce1c06d8cb17ab287c1b54bc1147f2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -65,7 +65,7 @@ public class CityGuard : RigidBody2D
 
 			if (shootTimer <= 0)
 			{
-				shootTimer += 30;
+				shootTimer += 80;
 				Vector2 shootVelocity = Player.position - GlobalPosition;
 				shootVelocity.y = 0f;
 				Node2D projectile = ProjectileManager.NewProjectile(ProjectileManager.Projectile_EnemyLaser, 1, shootPosition.GlobalPosition, shootVelocity.Normalized() * 8f, HelperMethods.CollisionType.Player);
@@ -95,13 +95,20 @@ public class CityGuard : RigidBody2D
 		}
 	}
 
-	private void SetRandomWalkValues()
+	private void SetRandomWalkValues(int specificDirection = 0, int specificTime = 0)
 	{
 		int walkTime = EffectsManager.random.Next(2, 6 + 1);
+		if (specificTime != 0)
+			walkTime = specificTime;
 
 		walkTimer.Start(walkTime);
 		direction = EffectsManager.random.Next(0, 1 + 1);
-		cityGuardAnim.FlipH = direction == -1;
+		if (direction == 0)
+			direction = -1;
+
+		if (specificDirection != 0)
+			direction = specificDirection;
+
 	}
 
 	private void SetIdleTime()
@@ -120,6 +127,15 @@ public class CityGuard : RigidBody2D
 	private void OnIdleTimerOut()
 	{
 		SetRandomWalkValues();
+	}
+
+	private void OnLimitDetectorAreaEntered(object area)
+	{
+		Area2D areaNode = area as Area2D;
+		if (areaNode.Name.Contains(HelperMethods.TravelLimitName))
+		{
+			SetRandomWalkValues(-direction, 1);
+		}
 	}
 
 	private void OnDetectionAreaEntered(object body)
@@ -151,8 +167,16 @@ public class CityGuard : RigidBody2D
 				Vector2 goreVelocity = new Vector2(EffectsManager.random.Next(-6, 6 + 1), -EffectsManager.random.Next(45, 65 + 1) * 2.1f);
 				GoreManager.SpawnGore(goreIndex, GlobalPosition, goreVelocity);
 			}
+			for (int i = 0; i < EffectsManager.random.Next(3, 5 + 1); i++)
+			{
+				Vector2 explosionPosition = GlobalPosition + new Vector2(EffectsManager.random.Next(-12, 12 + 1), EffectsManager.random.Next(-12, 12 + 1));
+				ParticlesManager.CreateExplosion(explosionPosition, 1f);
+				if (EffectsManager.random.Next(0, 1 + 1) == 0)
+					SoundManager.PlaySound(EffectsManager.random.Next(SoundManager.Sounds_Explosion, SoundManager.Sounds_BigExplosion + 1));
+			}
 			EffectsManager.ShakeCamera(3, 5);
 			SoundManager.PlaySound(SoundManager.Sounds_BigExplosion);
+			LootManager.SpawnCoins(2, GlobalPosition);
 			QueueFree();
 		}
 	}

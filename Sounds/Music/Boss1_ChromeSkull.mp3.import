@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Boss1_ChromeSkull.mp3-4945b4a1b65e37810b0132d7cd3aaabc.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/Boss1_ChromeSkull.mp3"
+dest_files=[ "res://.import/Boss1_ChromeSkull.mp3-4945b4a1b65e37810b0132d7cd3aaabc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

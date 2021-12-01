@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Boss3_SelfDestruct.mp3-0af62a4d29918cf9169e312e265782c8.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/Boss3_SelfDestruct.mp3"
+dest_files=[ "res://.import/Boss3_SelfDestruct.mp3-0af62a4d29918cf9169e312e265782c8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

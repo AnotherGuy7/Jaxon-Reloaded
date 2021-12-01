@@ -11,6 +11,7 @@ public class ProjectileManager : Node2D
 	public const int Projectile_PlayerBullet_Blue = 2;
 	public const int Projectile_PlayerBullet_Green = 3;
 	public const int Projectile_EnemyLaser = 4;
+	public const int Projectile_DoomCannonLaser = 5;
 
 	[Export]
 	public PackedScene[] projectiles;

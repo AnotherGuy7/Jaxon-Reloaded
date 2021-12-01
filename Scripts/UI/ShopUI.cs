@@ -15,21 +15,47 @@ public class ShopUI : Control
 	private TextureButton[] weaponButtons;
 	private TextureRect darkSmoke1Node;
 	private TextureRect darkSmoke2Node;
-	private int[] weaponCosts = new int[5] { 0, 25, 35, 60, 90 };
+	private Control healthTicksNode;
+	private Control strengthTicksNode;
+	private Control speedTicksNode;
+	private TextureButton healthButton;
+	private TextureButton strengthButton;
+	private TextureButton speedButton;
+	private TextureButton[] allEnchancementButtons;
+	private Panel weaponsPanel;
+	private Panel enchancementsPanel;
+	private int[] weaponCosts = new int[5] { 0, 30, 65, 100, 210 };
+	private int[] healthCosts = new int[3] { 30, 55, 80 };
+	private int[] strengthCosts = new int[3] { 25, 40, 65 };
+	private int[] speedCosts = new int[3] { 30, 50, 70 };
 	private bool escapePressed = false;
 
 	public override void _Ready()
 	{
 		weaponButtons = new TextureButton[Player.AmountOfGuns];
-		weaponButtons[Player.Gun_Phaser] = GetNode<TextureButton>("Shop/PhaserButton");
-		weaponButtons[Player.Gun_Blaster] = GetNode<TextureButton>("Shop/BlasterButton");
-		weaponButtons[Player.Gun_Boomer] = GetNode<TextureButton>("Shop/BoomerButton");
-		weaponButtons[Player.Gun_PhaseRifle] = GetNode<TextureButton>("Shop/PhaserRifleButton");
-		weaponButtons[Player.Gun_DoomCannon] = GetNode<TextureButton>("Shop/Doom-CannonButton");
+		weaponButtons[Player.Gun_Phaser] = GetNode<TextureButton>("Shop/WeaponsPanel/PhaserButton");
+		weaponButtons[Player.Gun_Blaster] = GetNode<TextureButton>("Shop/WeaponsPanel/BlasterButton");
+		weaponButtons[Player.Gun_Boomer] = GetNode<TextureButton>("Shop/WeaponsPanel/BoomerButton");
+		weaponButtons[Player.Gun_PhaseRifle] = GetNode<TextureButton>("Shop/WeaponsPanel/PhaserRifleButton");
+		weaponButtons[Player.Gun_DoomCannon] = GetNode<TextureButton>("Shop/WeaponsPanel/Doom-CannonButton");
 		darkSmoke1Node = GetNode<TextureRect>("Background/DarkSmoke_1");
 		darkSmoke2Node = GetNode<TextureRect>("Background/DarkSmoke_2");
-		moneyLabel = GetNode<Label>("MoneyCounter/MoneyLabel");
+		healthTicksNode = GetNode<Control>("Shop/EnchancementsPanel/HealthTicks");
+		strengthTicksNode = GetNode<Control>("Shop/EnchancementsPanel/StrengthTicks");
+		speedTicksNode = GetNode<Control>("Shop/EnchancementsPanel/SpeedTicks");
+		healthButton = GetNode<TextureButton>("Shop/EnchancementsPanel/HealthButton");
+		strengthButton = GetNode<TextureButton>("Shop/EnchancementsPanel/MeleeButton");
+		speedButton = GetNode<TextureButton>("Shop/EnchancementsPanel/SpeedButton");
+		weaponsPanel = GetNode<Panel>("Shop/WeaponsPanel");
+		enchancementsPanel = GetNode<Panel>("Shop/EnchancementsPanel");
+		moneyLabel = GetNode<Label>("Shop/MoneyLabel");
+
+		allEnchancementButtons = new TextureButton[3];
+		allEnchancementButtons[0] = healthButton;
+		allEnchancementButtons[1] = strengthButton;
+		allEnchancementButtons[2] = speedButton;
 		ResetAllButtonIcons();
+		UpdateEnchancementButtons();
 	}
 
 	public override void _Process(float delta)
@@ -40,8 +66,14 @@ public class ShopUI : Control
 			if (weaponButtons[i].Pressed)
 				weaponButtons[i].Modulate = new Color(0.6f, 0.6f, 0.6f, 1f);
 		}
+		for (int i = 0; i < allEnchancementButtons.Length; i++)
+		{
+			allEnchancementButtons[i].Modulate = new Color(1f, 1f, 1f, 1f);
+			if (allEnchancementButtons[i].Pressed)
+				allEnchancementButtons[i].Modulate = new Color(0.6f, 0.6f, 0.6f, 1f);
+		}
 
-		if (Input.IsKeyPressed((int)KeyList.Escape))
+		if (!escapePressed && Input.IsKeyPressed((int)KeyList.Escape))
 		{
 			Transitions.FadeIn();
 			escapePressed = true;
@@ -49,7 +81,7 @@ public class ShopUI : Control
 		if (escapePressed && Transitions.fadeInCompleted)
 		{
 			Transitions.FadeOut();
-			ScenesHolder.SwitchScenesTo(ScenesHolder.UI_TitleScreen);
+			ScenesHolder.SwitchScenesTo(ScenesHolder.nextSceneIndex);
 		}
 
 		if (darkSmoke1Node.RectGlobalPosition.x <= -80f)
@@ -90,7 +122,70 @@ public class ShopUI : Control
 			}
 
 		}
-		moneyLabel.Text = Player.playerMoney.ToString();
+		moneyLabel.Text = "$" + Player.playerMoney.ToString();
+	}
+
+	private void UpdateEnchancementButtons()
+	{
+		healthButton.Visible = Player.healthLevel <= 3;
+		UpdateEnchancementTicks(healthTicksNode, Player.healthLevel);
+
+		strengthButton.Visible = Player.strengthLevel <= 3;
+		UpdateEnchancementTicks(strengthTicksNode, Player.strengthLevel);
+
+		speedButton.Visible = Player.speedLevel <= 3;
+		UpdateEnchancementTicks(speedTicksNode, Player.speedLevel);
+
+		for (int i = 0; i < allEnchancementButtons.Length; i++)
+		{
+			TextureRect priceTexture = allEnchancementButtons[i].GetNode<TextureRect>("CostTexture");
+			Label priceLabel = priceTexture.GetNode<Label>("CostLabel");
+			int cost = 0;
+			if (i == 0)
+			{
+				if (Player.healthLevel > 3)
+				{
+					priceTexture.Visible = false;
+					continue;
+				}
+
+				cost = healthCosts[Player.healthLevel - 1];
+			}
+			else if (i == 1)
+			{
+				if (Player.strengthLevel > 3)
+				{
+					priceTexture.Visible = false;
+					continue;
+				}
+
+				cost = strengthCosts[Player.strengthLevel - 1];
+			}
+			else if (i == 2)
+			{
+				if (Player.speedLevel > 3)
+				{
+					priceTexture.Visible = false;
+					continue;
+				}
+
+				cost = speedCosts[Player.speedLevel - 1];
+			}
+
+			priceLabel.Text = cost.ToString();
+			if (cost > Player.playerMoney)
+				priceLabel.Modulate = new Color(1f, 0f, 0f, 1f);
+		}
+	}
+
+	private void UpdateEnchancementTicks(Control ticksNode, int checkValue)
+	{
+		int amountOfTicksPerNode = 3;
+		for (int i = 0; i < amountOfTicksPerNode; i++)
+		{
+			TextureRect tick = ticksNode.GetChild(i) as TextureRect;
+			tick.Visible = i + 1 < checkValue;
+		}
 	}
 
 	private void OnPhaserButtonPressed()
@@ -190,5 +285,65 @@ public class ShopUI : Control
 		Player.playerMoney -= weaponCosts[buttonIndex];
 		Player.gunUnlocked[buttonIndex] = true;
 		ResetAllButtonIcons();
+	}
+
+	private void OnHealthButtonPressed()
+	{
+		if (Player.healthLevel > 3)
+			return;
+
+		if (Player.playerMoney < healthCosts[Player.healthLevel - 1])
+			return;
+
+		Player.playerMoney -= healthCosts[Player.healthLevel - 1];
+		Player.healthLevel += 1;
+		UpdateEnchancementButtons();
+	}
+
+
+	private void OnMeleeButtonPressed()
+	{
+		if (Player.strengthLevel > 3)
+			return;
+
+		if (Player.playerMoney < strengthCosts[Player.strengthLevel - 1])
+			return;
+
+		Player.playerMoney -= strengthCosts[Player.strengthLevel - 1];
+		Player.strengthLevel += 1;
+		UpdateEnchancementButtons();
+	}
+
+
+	private void OnSpeedButtonPressed()
+	{
+		if (Player.speedLevel > 3)
+			return;
+
+		if (Player.playerMoney < speedCosts[Player.speedLevel - 1])
+			return;
+
+		Player.playerMoney -= speedCosts[Player.speedLevel - 1];
+		Player.speedLevel += 1;
+		UpdateEnchancementButtons();
+	}
+
+	private void OnGunsButtonPressed()
+	{
+		weaponsPanel.Visible = true;
+		enchancementsPanel.Visible = false;
+	}
+
+
+	private void OnEnchancementButtonPressed()
+	{
+		weaponsPanel.Visible = false;
+		enchancementsPanel.Visible = true;
+	}
+
+	private void OnNextButtonPressed()
+	{
+		escapePressed = true;
+		Transitions.FadeIn();
 	}
 }

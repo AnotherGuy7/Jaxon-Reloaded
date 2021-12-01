@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/Enemies/RobotTank.cs" type="Script" id=1]
+[ext_resource path="res://Textures/Enemies/RobotTank/RobotTank_Barrel.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Projectiles/Missile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Textures/Enemies/RobotTank/RobotTank_1.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Enemies/RobotTank/RobotTank_3.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Enemies/RobotTank/RobotTank_2.png" type="Texture" id=6]
+[ext_resource path="res://Sounds/Player/PhaseRifleShootSound_Old.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/Player/BlasterShootSound_Old.wav" type="AudioStream" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 76, 46 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 12, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 10, 36 )
+
+[node name="RobotTank" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+mode = 3
+mass = 0.00102041
+script = ExtResource( 1 )
+missileScene = ExtResource( 3 )
+
+[node name="BarrelSprite" type="Sprite" parent="."]
+position = Vector2( 16, -8 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( 0, -6 )
+
+[node name="ShootPosition" type="Position2D" parent="BarrelSprite"]
+position = Vector2( 59, 0 )
+
+[node name="RobotTankAnim" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Idle"
+frame = 2
+playing = true
+
+[node name="RobotTankHitbox" type="CollisionShape2D" parent="."]
+position = Vector2( -4, 6 )
+shape = SubResource( 2 )
+
+[node name="BotHitbox" type="Area2D" parent="."]
+position = Vector2( 6, -32 )
+
+[node name="BotShape" type="CollisionShape2D" parent="BotHitbox"]
+position = Vector2( -4, 0 )
+shape = SubResource( 3 )
+
+[node name="RamHitbox" type="Area2D" parent="."]
+position = Vector2( 72, 12 )
+
+[node name="RamShape" type="CollisionShape2D" parent="RamHitbox"]
+position = Vector2( 0, 4 )
+shape = SubResource( 4 )
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackRestTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="MissilePosition" type="Position2D" parent="."]
+position = Vector2( -60, -22 )
+
+[node name="MissileShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -7.0
+pitch_scale = 0.6
+
+[node name="LaserShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -7.0
+pitch_scale = 0.7
+
+[connection signal="area_entered" from="BotHitbox" to="." method="OnBotHitboxAreaEntered"]
+[connection signal="area_entered" from="RamHitbox" to="." method="OnRamHitboxEntered"]
+[connection signal="body_entered" from="RamHitbox" to="." method="OnRamHitboxBodyEntered"]
+[connection signal="timeout" from="AttackTimer" to="." method="OnAttackTimerOut"]
+[connection signal="timeout" from="AttackRestTimer" to="." method="OnAttackRestTimerOut"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/MilitaryBase_TheQuarantineSquad.mp3-9ed4f03ab3cd39aa9cf65fa9217555bb.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/MilitaryBase_TheQuarantineSquad.mp3"
+dest_files=[ "res://.import/MilitaryBase_TheQuarantineSquad.mp3-9ed4f03ab3cd39aa9cf65fa9217555bb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

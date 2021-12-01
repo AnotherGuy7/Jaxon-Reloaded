@@ -1,0 +1,76 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Textures/Projectiles/GroundFire/GroundFire_2.png" type="Texture" id=1]
+[ext_resource path="res://Textures/Projectiles/GroundFire/GroundFire_3.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Projectiles/GroundFire/GroundFire_4.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Projectiles/GroundFire/GroundFire_5.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Projectiles/GroundFire/GroundFire_0.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Projectiles/GroundFire/GroundFire_1.png" type="Texture" id=6]
+[ext_resource path="res://Textures/Projectiles/GroundFire/GroundFire_8.png" type="Texture" id=7]
+[ext_resource path="res://Textures/Projectiles/GroundFire/GroundFire_6.png" type="Texture" id=8]
+[ext_resource path="res://Textures/Projectiles/GroundFire/GroundFire_7.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/Misc/GroundFire.cs" type="Script" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 4 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.0186335, 0.242236, 0.614907, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.910156, 0.484187, 0.142212, 1, 0.742188, 0.38559, 0.393947, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+lifetime_randomness = 0.2
+emission_shape = 1
+emission_sphere_radius = 6.0
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 90.0
+gravity = Vector3( 0, -4, 0 )
+initial_velocity = 3.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle_random = 1.0
+scale = 1.4
+scale_random = 1.0
+color_ramp = SubResource( 4 )
+
+[node name="GroundFire" type="Area2D"]
+script = ExtResource( 10 )
+
+[node name="GroundFireAnim" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 6
+playing = true
+offset = Vector2( 0, -20 )
+
+[node name="GroundFireHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="TimeLeft" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+autostart = true
+
+[node name="FireParticles" type="Particles2D" parent="."]
+position = Vector2( 0, -8 )
+amount = 28
+lifetime = 5.0
+speed_scale = 3.0
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 5 )
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="timeout" from="TimeLeft" to="." method="OnTimeLeftOut"]

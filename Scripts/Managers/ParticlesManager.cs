@@ -7,6 +7,9 @@ public class ParticlesManager : Node2D
 	[Export]
 	public PackedScene emptyParticleEmmitter;
 
+	[Export]
+	public PackedScene explosionScene;
+
 	public Particles2D[] particleNodes;
 	public static ParticlesManager particlesManager;
 	public static CanvasLayer particleLayer;
@@ -258,5 +261,20 @@ public class ParticlesManager : Node2D
 		particles.AddChild(timer);
 		timer.OneShot = true;
 		timer.Start(particleTime);
+	}
+
+	public static void CreateExplosion(Vector2 position, float maxDelayTime = 0f, int soundType = 0, int screenShakeTime = 0, int screenShakeIntensity = 0)
+	{
+		AnimatedSprite explosion = (AnimatedSprite)particlesManager.explosionScene.Instance();
+		explosion.GlobalPosition = position;
+
+		float delayTime = (EffectsManager.random.Next(0, 100 + 1) / 100f) * maxDelayTime;
+		explosion.Set("delayTime", delayTime);
+		explosion.Set("soundType", soundType);
+
+		if (screenShakeTime != 0)
+			EffectsManager.ShakeCamera(screenShakeIntensity, screenShakeTime);
+
+		particleLayer.AddChild(explosion);
 	}
 }

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Boss2_Soma.mp3-28511523c69cbcb2f5530b1151387bf2.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/Boss2_Soma.mp3"
+dest_files=[ "res://.import/Boss2_Soma.mp3-28511523c69cbcb2f5530b1151387bf2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

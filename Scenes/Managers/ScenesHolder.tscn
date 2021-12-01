@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Managers/ScenesHolder.cs" type="Script" id=1]
-[ext_resource path="res://Scenes/Maps/TestScene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Maps/Test Maps/TestScene.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/UI/TitleScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/UI/ShopUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/UI/LevelSelectScreen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Maps/lab4.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Maps/mb1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Maps/lab3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Maps/mb2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Maps/mb3.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Maps/lab2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Maps/City3.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Maps/City2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Maps/City1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Maps/City4.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Maps/lab1.tscn" type="PackedScene" id=16]
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )
@@ -12,3 +23,14 @@ titleScreen = ExtResource( 3 )
 shopScreen = ExtResource( 4 )
 testScene = ExtResource( 2 )
 levelSelectScreen = ExtResource( 5 )
+cityArea1 = ExtResource( 14 )
+cityArea2 = ExtResource( 13 )
+cityArea3 = ExtResource( 12 )
+cityArea4 = ExtResource( 15 )
+militaryArea1 = ExtResource( 7 )
+militaryArea2 = ExtResource( 9 )
+militaryArea3 = ExtResource( 10 )
+labArea1 = ExtResource( 16 )
+labArea2 = ExtResource( 11 )
+labArea3 = ExtResource( 8 )
+labArea4 = ExtResource( 6 )

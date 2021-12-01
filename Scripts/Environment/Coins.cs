@@ -5,6 +5,9 @@ public class Coins : AnimatedSprite
 {
 	[Export]
 	public int coinValue = 0;
+
+	[Export]
+	public Color uiColor;
 	
 	private int floatTimer = 0;
 	private bool particlesAttatched = false;
@@ -29,7 +32,7 @@ public class Coins : AnimatedSprite
 			//ParticlesManager.AttachParticles(this, ParticlesManager.LaserParticles, 5 * 60);
 		}
 			
-		float yVelocity = (float)Math.Sin(Mathf.Deg2Rad(floatTimer) * 2);
+		float yVelocity = (float)Math.Sin(Mathf.Deg2Rad(floatTimer) * 2) * 0.08f;
 		if (falling)
 			yVelocity = 1.5f;
 		MoveLocalY(yVelocity);
@@ -41,6 +44,7 @@ public class Coins : AnimatedSprite
 		{
 			coinPickupSound.Play();
 			Player.playerMoney += coinValue;
+			PlayerUI.SetMoneyCounterModulate(uiColor);
 			QueueFree();
 		}
 		if (body is StaticBody2D)

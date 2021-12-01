@@ -1,70 +1,130 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_00.png" type="Texture" id=1]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossWalking_3.png" type="Texture" id=2]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_03.png" type="Texture" id=3]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_02.png" type="Texture" id=4]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_08.png" type="Texture" id=5]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_18.png" type="Texture" id=6]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_20.png" type="Texture" id=7]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_06.png" type="Texture" id=8]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_21.png" type="Texture" id=9]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_17.png" type="Texture" id=10]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_01.png" type="Texture" id=11]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_15.png" type="Texture" id=12]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_23.png" type="Texture" id=13]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_25.png" type="Texture" id=14]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossWalking_5.png" type="Texture" id=15]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossWalking_2.png" type="Texture" id=16]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_05.png" type="Texture" id=17]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_07.png" type="Texture" id=18]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_04.png" type="Texture" id=19]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_09.png" type="Texture" id=20]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_11.png" type="Texture" id=21]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_13.png" type="Texture" id=22]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_24.png" type="Texture" id=23]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossWalking_4.png" type="Texture" id=24]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_22.png" type="Texture" id=25]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_10.png" type="Texture" id=26]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_16.png" type="Texture" id=27]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_14.png" type="Texture" id=28]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_19.png" type="Texture" id=29]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossFlame_12.png" type="Texture" id=30]
-[ext_resource path="res://Textures/Enemies/WelderBot/BossWalking_1.png" type="Texture" id=31]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_00.png" type="Texture" id=1]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Walk_0.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_01.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_02.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_03.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_04.png" type="Texture" id=6]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_05.png" type="Texture" id=7]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Smoke_3.png" type="Texture" id=8]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_08.png" type="Texture" id=9]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_07.png" type="Texture" id=10]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_12.png" type="Texture" id=11]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Smoke_0.png" type="Texture" id=12]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_16.png" type="Texture" id=13]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_06.png" type="Texture" id=14]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_09.png" type="Texture" id=15]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Walk_1.png" type="Texture" id=16]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Smoke_1.png" type="Texture" id=17]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_14.png" type="Texture" id=18]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_13.png" type="Texture" id=19]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_10.png" type="Texture" id=20]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_15.png" type="Texture" id=21]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Flame_11.png" type="Texture" id=22]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Smoke_2.png" type="Texture" id=23]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Walk_2.png" type="Texture" id=24]
+[ext_resource path="res://Textures/Enemies/WelderBot/WelderBot_Walk_3.png" type="Texture" id=25]
+[ext_resource path="res://Scenes/Projectiles/GroundFire.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Scripts/Enemies/WelderBot.cs" type="Script" id=32]
+[ext_resource path="res://Scenes/Projectiles/Fireball.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Sounds/Enemies/FlamethrowerActive.wav" type="AudioStream" id=34]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 31 ), ExtResource( 16 ), ExtResource( 2 ), ExtResource( 24 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 16 ), ExtResource( 24 ), ExtResource( 25 ) ],
 "loop": true,
 "name": "Walking",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 8 ), ExtResource( 18 ), ExtResource( 5 ), ExtResource( 20 ), ExtResource( 26 ), ExtResource( 21 ), ExtResource( 30 ), ExtResource( 22 ), ExtResource( 28 ), ExtResource( 12 ), ExtResource( 27 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 29 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 25 ), ExtResource( 13 ), ExtResource( 23 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 11 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 21 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "Flamethrower",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 17 ), ExtResource( 23 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Smoke",
 "speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 20, 32 )
+extents = Vector2( 20, 37.9664 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 77, 40 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.47205, 1 )
+colors = PoolColorArray( 0.90625, 0.478209, 0.194702, 1, 0.441406, 0.108627, 0.21782, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+lifetime_randomness = 1.0
+emission_shape = 2
+emission_box_extents = Vector3( 77, 40, 1 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 7.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_random = 0.6
+color_ramp = SubResource( 5 )
 
 [node name="WelderBot" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+mode = 3
 mass = 0.00102041
 script = ExtResource( 32 )
+flamethrowerFireball = ExtResource( 33 )
+groundFireScene = ExtResource( 26 )
 
 [node name="WelderBotAnim" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "Flamethrower"
-frame = 4
+animation = "Idle"
 playing = true
-offset = Vector2( -50, 0 )
+offset = Vector2( 50, 0 )
 
 [node name="WelderBotHitbox" type="CollisionShape2D" parent="."]
-position = Vector2( -4, 0 )
 shape = SubResource( 2 )
+
+[node name="FlamethrowerArea" type="Area2D" parent="."]
+position = Vector2( 67, 0 )
+
+[node name="FlamethrowerRect" type="CollisionShape2D" parent="FlamethrowerArea"]
+shape = SubResource( 3 )
+
+[node name="FlamethrowerParticles" type="Particles2D" parent="FlamethrowerArea"]
+emitting = false
+amount = 50
+lifetime = 2.0
+speed_scale = 6.0
+local_coords = false
+process_material = SubResource( 6 )
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackRestTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="FlamethrowerSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 34 )
+volume_db = -9.0
+
+[connection signal="body_entered" from="." to="." method="OnWelderBodyEntered"]
+[connection signal="timeout" from="AttackTimer" to="." method="OnAttackTimerOut"]
+[connection signal="timeout" from="AttackRestTimer" to="." method="OnAttackRestTimerOut"]

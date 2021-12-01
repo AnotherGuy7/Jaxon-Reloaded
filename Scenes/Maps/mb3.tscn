@@ -1,0 +1,131 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scenes/Tilesets/mb.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Textures/Backgrounds/NightSky.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Backgrounds/Tanks.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Backgrounds/Fence.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Backgrounds/MilitaryTents.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Environment/FloatingPlatform.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Environment/Medkit.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/Misc/DefaultMapScript.cs" type="Script" id=9]
+[ext_resource path="res://Scenes/Enemies/Bosses/RobotTank.tscn" type="PackedScene" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="mb3" type="Node2D"]
+script = ExtResource( 9 )
+nextLevelSceneID = 10
+bossLevel = true
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
+layer = -1
+scale = Vector2( 3, 3 )
+transform = Transform2D( 3, 0, 0, 3, 0, 0 )
+scroll_base_offset = Vector2( 0, -120 )
+scroll_ignore_camera_zoom = true
+
+[node name="MoonParallax" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+motion_scale = Vector2( 0, 0 )
+motion_offset = Vector2( 0, -40 )
+motion_mirroring = Vector2( 320, 180 )
+
+[node name="Moon" type="Sprite" parent="Background/ParallaxBackground/MoonParallax"]
+texture = ExtResource( 3 )
+centered = false
+offset = Vector2( 0, -90 )
+
+[node name="MilitaryTents" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+motion_scale = Vector2( 0.05, 0 )
+motion_offset = Vector2( 0, -190 )
+motion_mirroring = Vector2( 320, 0 )
+
+[node name="Tents" type="Sprite" parent="Background/ParallaxBackground/MilitaryTents"]
+position = Vector2( 0, -90 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="Tanks" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+motion_scale = Vector2( 0.15, 0 )
+motion_offset = Vector2( 0, -190 )
+motion_mirroring = Vector2( 320, 0 )
+
+[node name="Tanks" type="Sprite" parent="Background/ParallaxBackground/Tanks"]
+position = Vector2( 0, -90 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Fence" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+motion_scale = Vector2( 0.25, 0 )
+motion_offset = Vector2( 0, -190 )
+motion_mirroring = Vector2( 320, 0 )
+
+[node name="Fence" type="Sprite" parent="Background/ParallaxBackground/Fence"]
+position = Vector2( 0, -90 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="BaseMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 24, 24 )
+format = 1
+tile_data = PoolIntArray( -655360, 536870945, 0, -655359, 536870945, 0, -655358, 536870929, 0, -655338, 536870928, 0, -655337, 536870945, 0, -655336, 536870945, 0, -524289, 536870945, 0, -589824, 536870945, 0, -589823, 536870945, 0, -589822, 536870926, 0, -589802, 536870927, 0, -589801, 536870945, 0, -589800, 536870945, 0, -589799, 536870945, 0, -458754, 536870945, 0, -458753, 536870945, 0, -524288, 536870945, 0, -524287, 536870929, 0, -524265, 536870928, 0, -524264, 536870945, 0, -524263, 536870945, 0, -524262, 536870945, 0, -393218, 536870945, 0, -393217, 536870945, 0, -458752, 536870945, 0, -458751, 536870929, 0, -458729, 536870928, 0, -458728, 536870945, 0, -458727, 536870945, 0, -458726, 536870945, 0, -327682, 536870928, 0, -327681, 536870929, 0, -393216, 536870944, 0, -393193, 536870944, 0, -393191, 536870928, 0, -393190, 536870929, 0, -262146, 536870928, 0, -262145, 536870929, 0, -327678, 536870912, 0, -327658, 536870914, 0, -327655, 536870928, 0, -327654, 536870929, 0, -196610, 536870928, 0, -196609, 536870929, 0, -262144, 536870944, 0, -262142, 536870918, 0, -262141, 536870916, 0, -262123, 536870918, 0, -262122, 536870916, 0, -262121, 536870944, 0, -262119, 536870928, 0, -262118, 536870929, 0, -131074, 536870928, 0, -131073, 536870929, 0, -196606, 536870922, 0, -196605, 536870920, 0, -196602, 536870914, 0, -196592, 536870914, 0, -196587, 536870922, 0, -196586, 536870920, 0, -196583, 536870928, 0, -196582, 536870929, 0, -65538, 536870928, 0, -65537, 536870929, 0, -131072, 536870944, 0, -131069, 536870940, 0, -131067, 536870913, 0, -131066, 536870914, 0, -131065, 536870913, 0, -131062, 536870914, 0, -131061, 536870912, 0, -131057, 536870914, 0, -131056, 536870914, 0, -131055, 536870914, 0, -131054, 536870913, 0, -131053, 536870913, 0, -131051, 536870941, 0, -131049, 536870944, 0, -131047, 536870928, 0, -131046, 536870929, 0, -2, 536870928, 0, -1, 536870929, 0, -65534, 536870919, 0, -65533, 536870939, 0, -65531, 536870919, 0, -65528, 536870919, 0, -65525, 536870919, 0, -65522, 536870919, 0, -65519, 536870919, 0, -65516, 536870919, 0, -65515, 536870938, 0, -65511, 536870928, 0, -65510, 536870929, 0, 65534, 536870928, 0, 65535, 536870929, 0, 0, 536870923, 0, 2, 536870946, 0, 5, 536870946, 0, 8, 536870946, 0, 11, 536870946, 0, 14, 536870946, 0, 17, 536870946, 0, 20, 536870946, 0, 23, 536870923, 0, 25, 536870928, 0, 26, 536870929, 0, 131070, 536870928, 0, 131071, 536870929, 0, 65536, 536870931, 0, 65537, 536870931, 0, 65559, 536870931, 0, 65560, 536870931, 0, 65561, 536870928, 0, 65562, 536870929, 0 )
+
+[node name="CameraLimits" type="Node2D" parent="."]
+
+[node name="TopLimit" type="Position2D" parent="CameraLimits"]
+position = Vector2( 568, -240 )
+
+[node name="BottomLimit" type="Position2D" parent="CameraLimits"]
+position = Vector2( 264, 48 )
+
+[node name="LeftLimit" type="Position2D" parent="CameraLimits"]
+position = Vector2( -48, -144 )
+
+[node name="RightLimit" type="Position2D" parent="CameraLimits"]
+position = Vector2( 648, -80 )
+
+[node name="TravelLimits" type="Node2D" parent="."]
+
+[node name="TravelLimit" type="Area2D" parent="TravelLimits"]
+position = Vector2( 0, -16 )
+
+[node name="TravelLimitShape" type="CollisionShape2D" parent="TravelLimits/TravelLimit"]
+shape = SubResource( 1 )
+
+[node name="TravelLimit2" type="Area2D" parent="TravelLimits"]
+position = Vector2( 592, -16 )
+
+[node name="TravelLimitShape" type="CollisionShape2D" parent="TravelLimits/TravelLimit2"]
+shape = SubResource( 1 )
+
+[node name="ProjectileNode" type="Node2D" parent="."]
+
+[node name="EnvironmentNode" type="Node2D" parent="."]
+
+[node name="FloatingPlatform" parent="EnvironmentNode" instance=ExtResource( 7 )]
+position = Vector2( 96, -128 )
+moveSpeed = 1.5
+stationary = false
+
+[node name="StartPoint" type="Position2D" parent="EnvironmentNode/FloatingPlatform"]
+
+[node name="EndPoint" type="Position2D" parent="EnvironmentNode/FloatingPlatform"]
+position = Vector2( 416, 0 )
+
+[node name="Medkit" parent="EnvironmentNode" instance=ExtResource( 8 )]
+position = Vector2( 304, -176 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 24, -32 )
+
+[node name="SpawnPoint" type="Position2D" parent="."]
+position = Vector2( 24, -32 )
+
+[node name="RobotTank" parent="." instance=ExtResource( 10 )]
+position = Vector2( 520, -48 )
+scale = Vector2( -1, 1 )

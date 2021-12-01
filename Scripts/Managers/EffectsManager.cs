@@ -49,6 +49,9 @@ public class EffectsManager : Node2D
 	{
 		if (cameraShaking)
 		{
+			if (Player.playerCam == null)
+				return;
+
 			Player.playerCam.Position = Vector2.Zero;
 
 			int cameraShakeX = random.Next(-cameraShakeIntensity, cameraShakeIntensity + 1);

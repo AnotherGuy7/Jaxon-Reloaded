@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/FlamethrowerActive.wav-3315ae5669899e69fd0237611f6dc756.sample"
+
+[deps]
+
+source_file="res://Sounds/Enemies/FlamethrowerActive.wav"
+dest_files=[ "res://.import/FlamethrowerActive.wav-3315ae5669899e69fd0237611f6dc756.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

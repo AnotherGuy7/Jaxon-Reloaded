@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Robotic_Experiments.wav-4dcbf5ab020e287ac029bf2d56b0edd9.sample"
+
+[deps]
+
+source_file="res://Sounds/Music/Robotic_Experiments.wav"
+dest_files=[ "res://.import/Robotic_Experiments.wav-4dcbf5ab020e287ac029bf2d56b0edd9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
