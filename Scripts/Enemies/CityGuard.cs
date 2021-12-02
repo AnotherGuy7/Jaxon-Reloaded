@@ -65,7 +65,7 @@ public class CityGuard : RigidBody2D
 
 			if (shootTimer <= 0)
 			{
-				shootTimer += 80;
+				shootTimer += 140;
 				Vector2 shootVelocity = Player.position - GlobalPosition;
 				shootVelocity.y = 0f;
 				Node2D projectile = ProjectileManager.NewProjectile(ProjectileManager.Projectile_EnemyLaser, 1, shootPosition.GlobalPosition, shootVelocity.Normalized() * 8f, HelperMethods.CollisionType.Player);
@@ -108,6 +108,11 @@ public class CityGuard : RigidBody2D
 
 		if (specificDirection != 0)
 			direction = specificDirection;
+
+		if (direction == 1)
+			cityGuardAnim.FlipH = false;
+		else
+			cityGuardAnim.FlipH = true;
 
 	}
 
@@ -164,19 +169,20 @@ public class CityGuard : RigidBody2D
 				else
 					goreIndex = EffectsManager.random.Next(GoreManager.Gore_CityGuard1, GoreManager.Gore_CityGuard2 + 1);
 
-				Vector2 goreVelocity = new Vector2(EffectsManager.random.Next(-6, 6 + 1), -EffectsManager.random.Next(45, 65 + 1) * 2.1f);
+				Vector2 goreVelocity = new Vector2(EffectsManager.random.Next(-36, 36 + 1), -EffectsManager.random.Next(45, 65 + 1) * 2.1f);
 				GoreManager.SpawnGore(goreIndex, GlobalPosition, goreVelocity);
 			}
 			for (int i = 0; i < EffectsManager.random.Next(3, 5 + 1); i++)
 			{
-				Vector2 explosionPosition = GlobalPosition + new Vector2(EffectsManager.random.Next(-12, 12 + 1), EffectsManager.random.Next(-12, 12 + 1));
-				ParticlesManager.CreateExplosion(explosionPosition, 1f);
+				Vector2 explosionPosition = GlobalPosition + new Vector2(EffectsManager.random.Next(-18, 18 + 1), EffectsManager.random.Next(-18, 18 + 1));
+				ParticlesManager.CreateExplosion(explosionPosition, 0.5f);
 				if (EffectsManager.random.Next(0, 1 + 1) == 0)
 					SoundManager.PlaySound(EffectsManager.random.Next(SoundManager.Sounds_Explosion, SoundManager.Sounds_BigExplosion + 1));
 			}
+
 			EffectsManager.ShakeCamera(3, 5);
 			SoundManager.PlaySound(SoundManager.Sounds_BigExplosion);
-			LootManager.SpawnCoins(2, GlobalPosition);
+			LootManager.SpawnCoins(3, GlobalPosition);
 			QueueFree();
 		}
 	}

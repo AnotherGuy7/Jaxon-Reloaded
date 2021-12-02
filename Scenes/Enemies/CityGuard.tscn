@@ -26,7 +26,7 @@ extents = Vector2( 10.5273, 26.2 )
 extents = Vector2( 12.527, 28.2 )
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 224.0
+radius = 104.005
 
 [node name="CityGuard" type="RigidBody2D"]
 collision_layer = 2

@@ -102,7 +102,7 @@ public class DefaultMapScript : Node2D
 				Transitions.FadeIn();
 			}
 		}
-		if (Transitions.fadeInCompleted && bossLevel)
+		if (Transitions.fadeInCompleted && bossLevel && nextLevelTimer > 8 * 60)
 		{
 			Transitions.FadeOut();
 			ScenesHolder.SwitchScenesTo(ScenesHolder.UI_ShopScreen);

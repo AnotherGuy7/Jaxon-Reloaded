@@ -176,6 +176,7 @@ public class ShopUI : Control
 			if (cost > Player.playerMoney)
 				priceLabel.Modulate = new Color(1f, 0f, 0f, 1f);
 		}
+		moneyLabel.Text = "$" + Player.playerMoney.ToString();
 	}
 
 	private void UpdateEnchancementTicks(Control ticksNode, int checkValue)
@@ -192,15 +193,15 @@ public class ShopUI : Control
 	{
 		int buttonIndex = Player.Gun_Phaser;
 
-		if (Player.playerMoney < weaponCosts[buttonIndex])
-			return;
-
 		if (Player.gunUnlocked[buttonIndex])
 		{
 			Player.activeGun = buttonIndex;
 			ResetAllButtonIcons();
 			return;
 		}
+
+		if (Player.playerMoney < weaponCosts[buttonIndex])
+			return;
 
 		Player.playerMoney -= weaponCosts[buttonIndex];
 		Player.gunUnlocked[buttonIndex] = true;
@@ -212,15 +213,15 @@ public class ShopUI : Control
 	{
 		int buttonIndex = Player.Gun_Blaster;
 
-		if (Player.playerMoney < weaponCosts[buttonIndex])
-			return;
-
 		if (Player.gunUnlocked[buttonIndex])
 		{
 			Player.activeGun = buttonIndex;
 			ResetAllButtonIcons();
 			return;
 		}
+
+		if (Player.playerMoney < weaponCosts[buttonIndex])
+			return;
 
 		Player.playerMoney -= weaponCosts[buttonIndex];
 		Player.gunUnlocked[buttonIndex] = true;
@@ -232,15 +233,15 @@ public class ShopUI : Control
 	{
 		int buttonIndex = Player.Gun_Boomer;
 
-		if (Player.playerMoney < weaponCosts[buttonIndex])
-			return;
-
 		if (Player.gunUnlocked[buttonIndex])
 		{
 			Player.activeGun = buttonIndex;
 			ResetAllButtonIcons();
 			return;
 		}
+
+		if (Player.playerMoney < weaponCosts[buttonIndex])
+			return;
 
 		Player.playerMoney -= weaponCosts[buttonIndex];
 		Player.gunUnlocked[buttonIndex] = true;
@@ -252,15 +253,15 @@ public class ShopUI : Control
 	{
 		int buttonIndex = Player.Gun_PhaseRifle;
 
-		if (Player.playerMoney < weaponCosts[buttonIndex])
-			return;
-
 		if (Player.gunUnlocked[buttonIndex])
 		{
 			Player.activeGun = buttonIndex;
 			ResetAllButtonIcons();
 			return;
 		}
+
+		if (Player.playerMoney < weaponCosts[buttonIndex])
+			return;
 
 		Player.playerMoney -= weaponCosts[buttonIndex];
 		Player.gunUnlocked[buttonIndex] = true;
@@ -272,15 +273,15 @@ public class ShopUI : Control
 	{
 		int buttonIndex = Player.Gun_DoomCannon;
 
-		if (Player.playerMoney < weaponCosts[buttonIndex])
-			return;
-
 		if (Player.gunUnlocked[buttonIndex])
 		{
 			Player.activeGun = buttonIndex;
 			ResetAllButtonIcons();
 			return;
 		}
+
+		if (Player.playerMoney < weaponCosts[buttonIndex])
+			return;
 
 		Player.playerMoney -= weaponCosts[buttonIndex];
 		Player.gunUnlocked[buttonIndex] = true;

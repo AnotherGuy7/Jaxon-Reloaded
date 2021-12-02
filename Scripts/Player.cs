@@ -141,15 +141,15 @@ public class Player : KinematicBody2D
 		}
 
 		if (Input.IsKeyPressed((int)KeyList.Escape))
-        {
+		{
 			escapePressed = true;
 			Transitions.FadeIn();
-        }
+		}
 		if (escapePressed && Transitions.fadeInCompleted)
-        {
+		{
 			Transitions.FadeOut();
 			ScenesHolder.SwitchScenesTo(ScenesHolder.UI_TitleScreen);
-        }
+		}
 	}
 
 	public override void _PhysicsProcess(float delta)
@@ -240,6 +240,7 @@ public class Player : KinematicBody2D
 			playerMoney -= 50;
 			if (playerMoney < 0)
 				playerMoney = 0;
+
 			ScenesHolder.SwitchScenesTo(ScenesHolder.UI_TitleScreen);
 			Transitions.FadeOut();
 
@@ -329,7 +330,7 @@ public class Player : KinematicBody2D
 		Vector2 vectorToMouse = GetGlobalMousePosition() - playerGun.GlobalPosition;
 		Vector2 normalizedMouseVector = vectorToMouse.Normalized();
 		float angleToMouse = (float)Math.Atan2(normalizedMouseVector.y, normalizedMouseVector.x);
-		if (direction == Direction.Right)
+		/*if (direction == Direction.Right)
 			angleToMouse = Mathf.Clamp(angleToMouse, (float)-Math.PI / 2f, (float)Math.PI / 2f);
 		else
 		{
@@ -338,7 +339,7 @@ public class Player : KinematicBody2D
 				angleToMouse = (float)-Math.PI / 2f;
 			if (angleToMouse >= 0 && angleToMouse < Math.PI / 2f)
 				angleToMouse = (float)Math.PI / 2f;
-		}
+		}*/
 
 		playerGun.Rotation = angleToMouse + gunRotationOffset;
 		doomCannonLaser1.Visible = false;

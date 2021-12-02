@@ -8,13 +8,20 @@ public class Missile : Area2D
 
 	private Vector2 velocity;
 	private AnimatedSprite missileAnim;
+	private int immunityTimer = 20;
 
 	public override void _Ready()
 	{
 		missileAnim = GetNode<AnimatedSprite>("MissileAnim");
 	}
 
-	public override void _PhysicsProcess(float delta)
+    public override void _Process(float delta)
+    {
+		if (missileActive && immunityTimer > 0)
+			immunityTimer--;
+	}
+
+    public override void _PhysicsProcess(float delta)
 	{
 		if (missileActive && !setVelocity)
 		{
@@ -31,6 +38,9 @@ public class Missile : Area2D
 
 	private void OnMissileBodyEntered(object body)
 	{
+		if (!missileActive || immunityTimer > 0)
+			return;
+
 		if (body == Player.player)
 		{
 			Player.player.Call("Hurt", 1);
@@ -48,7 +58,7 @@ public class Missile : Area2D
 
 	private void OnMissileAreaEntered(object area)
 	{
-		if (area is RobotTank)
+		if (area is RobotTank || !missileActive || immunityTimer > 0)
 			return;
 
 		if (area is Projectile)

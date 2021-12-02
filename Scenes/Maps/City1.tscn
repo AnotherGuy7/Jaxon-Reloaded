@@ -75,6 +75,7 @@ texture = ExtResource( 6 )
 centered = false
 
 [node name="BackgroundMap" type="TileMap" parent="."]
+self_modulate = Color( 0.811765, 0.811765, 0.811765, 1 )
 tile_set = ExtResource( 11 )
 cell_size = Vector2( 24, 24 )
 collision_layer = 0
@@ -182,35 +183,35 @@ shape = SubResource( 1 )
 
 [node name="Unibit" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 384, -64 )
-frame = 2
+frame = 9
 
 [node name="Unibit3" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 448, -64 )
-frame = 1
+frame = 8
 
 [node name="Unibit4" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 488, -264 )
-frame = 1
+frame = 8
 
 [node name="Unibit5" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 520, -264 )
-frame = 0
+frame = 7
 
 [node name="Unibit6" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 552, -264 )
-frame = 12
+frame = 6
 
 [node name="Unibit7" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 552, -296 )
-frame = 12
+frame = 6
 
 [node name="Unibit8" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 488, -296 )
-frame = 11
+frame = 5
 
 [node name="Unibit9" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 792, -144 )
-frame = 11
+frame = 5
 
 [node name="Unibit10" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 824, -144 )
@@ -222,23 +223,23 @@ frame = 10
 
 [node name="Unibit12" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 1128, -168 )
-frame = 9
+frame = 3
 
 [node name="Unibit13" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 1160, -168 )
-frame = 9
+frame = 3
 
 [node name="Unibit16" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 1160, -192 )
-frame = 8
+frame = 2
 
 [node name="Unibit17" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 1192, -192 )
-frame = 8
+frame = 2
 
 [node name="Unibit18" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 1144, -24 )
-frame = 8
+frame = 2
 
 [node name="Unibit19" parent="EnvironmentNode" instance=ExtResource( 8 )]
 position = Vector2( 1176, -24 )
@@ -250,22 +251,24 @@ frame = 10
 
 [node name="Pentabit" parent="EnvironmentNode" instance=ExtResource( 1 )]
 position = Vector2( 416, -64 )
-frame = 4
+frame = 11
 
 [node name="Pentabit2" parent="EnvironmentNode" instance=ExtResource( 1 )]
 position = Vector2( 520, -296 )
-frame = 3
+frame = 4
 
 [node name="Pentabit3" parent="EnvironmentNode" instance=ExtResource( 1 )]
 position = Vector2( 1128, -192 )
-frame = 3
+frame = 4
 
 [node name="Pentabit4" parent="EnvironmentNode" instance=ExtResource( 1 )]
 position = Vector2( 1192, -168 )
-frame = 2
+frame = 9
 
 [node name="FloatingPlatform" parent="EnvironmentNode" instance=ExtResource( 12 )]
 position = Vector2( 688, -24 )
+frame = 2
+moveSpeed = 1.2
 
 [node name="StartPoint" type="Position2D" parent="EnvironmentNode/FloatingPlatform"]
 position = Vector2( 0, -16 )

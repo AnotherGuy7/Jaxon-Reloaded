@@ -3,7 +3,7 @@ using System;
 
 public class Explosion : AnimatedSprite
 {
-	public int soundType = 0;
+	public int soundType = -1;
 	public float delayTime = 0;
 
 	public override void _Ready()
@@ -16,8 +16,11 @@ public class Explosion : AnimatedSprite
 		Visible = true;
 		Play("default");
 
-		if (soundType != 0)
+		if (soundType != -1)
+		{
 			SoundManager.PlaySound(soundType);
+			soundType = -1;
+		}
 	}
 
 	private void OnAnimationFinished()

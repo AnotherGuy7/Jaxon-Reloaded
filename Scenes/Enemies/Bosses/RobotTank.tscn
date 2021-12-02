@@ -46,7 +46,6 @@ position = Vector2( 59, 0 )
 [node name="RobotTankAnim" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 2
 playing = true
 
 [node name="RobotTankHitbox" type="CollisionShape2D" parent="."]

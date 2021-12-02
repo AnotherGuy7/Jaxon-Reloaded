@@ -30,24 +30,24 @@ nextLevelSceneID = 12
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
 layer = -1
-scale = Vector2( 3, 3 )
-transform = Transform2D( 3, 0, 0, 3, 0, 0 )
-scroll_base_offset = Vector2( 0, -180 )
+scale = Vector2( 3.3, 3.3 )
+transform = Transform2D( 3.3, 0, 0, 3.3, 0, 0 )
+scroll_base_offset = Vector2( 0, -120 )
 scroll_ignore_camera_zoom = true
 
 [node name="Robots_1" type="ParallaxLayer" parent="Background/ParallaxBackground"]
 motion_scale = Vector2( 0.05, 0 )
-motion_offset = Vector2( 0, -190 )
+motion_offset = Vector2( 0, -205 )
 motion_mirroring = Vector2( 320, 0 )
 
 [node name="Robots" type="Sprite" parent="Background/ParallaxBackground/Robots_1"]
-position = Vector2( 0, -90 )
+position = Vector2( 0, -90.6667 )
 texture = ExtResource( 6 )
 centered = false
 
 [node name="Robots_2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
 motion_scale = Vector2( 0.15, 0 )
-motion_offset = Vector2( 0, -190 )
+motion_offset = Vector2( 0, -215 )
 motion_mirroring = Vector2( 320, 0 )
 
 [node name="Robots" type="Sprite" parent="Background/ParallaxBackground/Robots_2"]
@@ -57,7 +57,7 @@ centered = false
 
 [node name="LabWalls" type="ParallaxLayer" parent="Background/ParallaxBackground"]
 motion_scale = Vector2( 0.25, 0 )
-motion_offset = Vector2( 0, -190 )
+motion_offset = Vector2( 0, -210 )
 motion_mirroring = Vector2( 320, 0 )
 
 [node name="Walls" type="Sprite" parent="Background/ParallaxBackground/LabWalls"]
@@ -166,8 +166,8 @@ shape = SubResource( 1 )
 
 [node name="FloatingPlatform" parent="EnvironmentNode" instance=ExtResource( 5 )]
 position = Vector2( 152, -160 )
-frame = 4
-moveSpeed = 1.5
+frame = 0
+moveSpeed = 1.2
 
 [node name="StartPoint" type="Position2D" parent="EnvironmentNode/FloatingPlatform"]
 
@@ -176,8 +176,8 @@ position = Vector2( 0, -216 )
 
 [node name="FloatingPlatform2" parent="EnvironmentNode" instance=ExtResource( 5 )]
 position = Vector2( 408, -24 )
-frame = 4
-moveSpeed = 1.5
+frame = 0
+moveSpeed = 1.2
 
 [node name="StartPoint" type="Position2D" parent="EnvironmentNode/FloatingPlatform2"]
 
@@ -186,7 +186,7 @@ position = Vector2( 0, -112 )
 
 [node name="FloatingPlatform3" parent="EnvironmentNode" instance=ExtResource( 5 )]
 position = Vector2( 384, -312 )
-frame = 4
+frame = 0
 moveSpeed = 1.5
 
 [node name="StartPoint" type="Position2D" parent="EnvironmentNode/FloatingPlatform3"]
@@ -199,115 +199,117 @@ position = Vector2( 768, -304 )
 
 [node name="Unibit" parent="EnvironmentNode" instance=ExtResource( 11 )]
 position = Vector2( 40, -160 )
+frame = 1
 
 [node name="Unibit2" parent="EnvironmentNode" instance=ExtResource( 11 )]
 position = Vector2( 96, -160 )
+frame = 1
 
 [node name="Unibit3" parent="EnvironmentNode" instance=ExtResource( 11 )]
 position = Vector2( 40, -352 )
-frame = 6
+frame = 0
 
 [node name="Unibit4" parent="EnvironmentNode" instance=ExtResource( 11 )]
 position = Vector2( 96, -376 )
-frame = 6
+frame = 0
 
 [node name="Unibit5" parent="EnvironmentNode" instance=ExtResource( 11 )]
 position = Vector2( 384, -344 )
-frame = 5
+frame = 12
 
 [node name="Unibit6" parent="EnvironmentNode" instance=ExtResource( 11 )]
 position = Vector2( 728, -344 )
-frame = 5
+frame = 12
 
 [node name="Unibit7" parent="EnvironmentNode" instance=ExtResource( 11 )]
 position = Vector2( 368, -152 )
-frame = 4
+frame = 11
 
 [node name="Unibit8" parent="EnvironmentNode" instance=ExtResource( 11 )]
 position = Vector2( 368, -24 )
-frame = 4
+frame = 11
 
 [node name="Pentabit" parent="EnvironmentNode" instance=ExtResource( 13 )]
 position = Vector2( 160, -40 )
-frame = 5
+frame = 12
 
 [node name="Pentabit2" parent="EnvironmentNode" instance=ExtResource( 13 )]
 position = Vector2( 176, -40 )
-frame = 5
+frame = 12
 
 [node name="Pentabit3" parent="EnvironmentNode" instance=ExtResource( 13 )]
 position = Vector2( 64, -160 )
-frame = 4
+frame = 11
 
 [node name="Pentabit4" parent="EnvironmentNode" instance=ExtResource( 13 )]
 position = Vector2( 40, -376 )
-frame = 3
+frame = 10
 
 [node name="Pentabit5" parent="EnvironmentNode" instance=ExtResource( 13 )]
 position = Vector2( 64, -352 )
-frame = 3
+frame = 10
 
 [node name="Pentabit6" parent="EnvironmentNode" instance=ExtResource( 13 )]
 position = Vector2( 472, -344 )
-frame = 3
+frame = 10
 
 [node name="Pentabit7" parent="EnvironmentNode" instance=ExtResource( 13 )]
 position = Vector2( 616, -344 )
-frame = 2
+frame = 9
 
 [node name="Pentabit8" parent="EnvironmentNode" instance=ExtResource( 13 )]
 position = Vector2( 944, -144 )
-frame = 2
+frame = 9
 
 [node name="Pentabit9" parent="EnvironmentNode" instance=ExtResource( 13 )]
 position = Vector2( 968, -168 )
-frame = 2
+frame = 9
 
 [node name="Pentabit10" parent="EnvironmentNode" instance=ExtResource( 13 )]
 position = Vector2( 680, -16 )
-frame = 2
+frame = 9
 
 [node name="Pentabit11" parent="EnvironmentNode" instance=ExtResource( 13 )]
 position = Vector2( 736, -16 )
-frame = 1
+frame = 8
 
 [node name="Pentabit12" parent="EnvironmentNode" instance=ExtResource( 13 )]
 position = Vector2( 368, -120 )
-frame = 1
+frame = 8
 
 [node name="Pentabit13" parent="EnvironmentNode" instance=ExtResource( 13 )]
 position = Vector2( 368, -48 )
+frame = 7
 
 [node name="Decibit" parent="EnvironmentNode" instance=ExtResource( 12 )]
-frame = 2
 
 [node name="Decibit2" parent="EnvironmentNode" instance=ExtResource( 12 )]
 position = Vector2( 64, -376 )
-frame = 1
+frame = 8
 
 [node name="Decibit3" parent="EnvironmentNode" instance=ExtResource( 12 )]
 position = Vector2( 88, -352 )
-frame = 1
+frame = 8
 
 [node name="Decibit4" parent="EnvironmentNode" instance=ExtResource( 12 )]
 position = Vector2( 552, -344 )
-frame = 1
+frame = 8
 
 [node name="Decibit5" parent="EnvironmentNode" instance=ExtResource( 12 )]
 position = Vector2( 968, -144 )
-frame = 0
+frame = 7
 
 [node name="Decibit6" parent="EnvironmentNode" instance=ExtResource( 12 )]
 position = Vector2( 944, -168 )
-frame = 0
+frame = 7
 
 [node name="Decibit7" parent="EnvironmentNode" instance=ExtResource( 12 )]
 position = Vector2( 368, -88 )
-frame = 0
+frame = 7
 
 [node name="Decibit8" parent="EnvironmentNode" instance=ExtResource( 12 )]
 position = Vector2( 712, -16 )
-frame = 0
+frame = 7
 
 [node name="ExitSign" parent="EnvironmentNode" instance=ExtResource( 14 )]
 position = Vector2( 960, -28 )

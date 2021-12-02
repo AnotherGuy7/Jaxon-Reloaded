@@ -20,6 +20,12 @@ public class Coins : AnimatedSprite
 		coinPickupSound = GetNode<AudioStreamPlayer>("CoinPickupSound");
 	}
 
+	public override void _Process(float delta)
+	{
+		if (!Visible && !coinPickupSound.Playing)
+			QueueFree();
+	}
+
 	public override void _PhysicsProcess(float delta)
 	{
 		floatTimer++;
@@ -45,7 +51,7 @@ public class Coins : AnimatedSprite
 			coinPickupSound.Play();
 			Player.playerMoney += coinValue;
 			PlayerUI.SetMoneyCounterModulate(uiColor);
-			QueueFree();
+			Visible = false;
 		}
 		if (body is StaticBody2D)
 			falling = false;

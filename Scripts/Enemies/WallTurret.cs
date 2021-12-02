@@ -41,7 +41,10 @@ public class WallTurret : RigidBody2D
 	private void OnDetectionAreaEntered(object body)
 	{
 		if (body == Player.player)
+		{
 			playerDetected = true;
+			shootTimer += 80;
+		}
 	}
 
 	private void OnDetectionAreaExited(object body)

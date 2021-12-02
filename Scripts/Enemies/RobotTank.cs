@@ -3,7 +3,7 @@ using System;
 
 public class RobotTank : RigidBody2D
 {
-	private const int MaxHealth = 450;
+	private const int MaxHealth = 600;
 	private const float MoveSpeed = 2.5f;
 	private const float RamSpeed = 6f;
 
@@ -90,14 +90,16 @@ public class RobotTank : RigidBody2D
 				laserShootSound.Play();
 				laserShootTimer = 0;
 			}
-			barrelSprite.GlobalRotation = vectorToPlayer.Angle();
+
+			vectorToPlayer = vectorToPlayer.Normalized();
+			barrelSprite.GlobalRotationDegrees = Mathf.Rad2Deg(vectorToPlayer.Angle());
 		}
 		else
 		{
-			if (direction == 1)
-				barrelSprite.GlobalRotation = 0f;
+			if (direction == -1)
+				barrelSprite.GlobalRotationDegrees = 0f;
 			else
-				barrelSprite.GlobalRotation = (float)Math.PI;
+				barrelSprite.GlobalRotationDegrees = 180f;
 		}
 		//GD.Print(attackRestTimer.TimeLeft);
 	}

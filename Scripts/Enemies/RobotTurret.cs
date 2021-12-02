@@ -67,8 +67,8 @@ public class RobotTurret : RigidBody2D
 		{
 			for (int i = 0; i < EffectsManager.random.Next(3, 5 + 1); i++)
 			{
-				Vector2 explosionPosition = GlobalPosition + new Vector2(EffectsManager.random.Next(-12, 12 + 1), EffectsManager.random.Next(-12, 12 + 1));
-				ParticlesManager.CreateExplosion(explosionPosition, 1f);
+				Vector2 explosionPosition = GlobalPosition + new Vector2(EffectsManager.random.Next(-18, 18 + 1), EffectsManager.random.Next(-18, 18 + 1));
+				ParticlesManager.CreateExplosion(explosionPosition, 0.5f);
 				if (EffectsManager.random.Next(0, 1 + 1) == 0)
 					SoundManager.PlaySound(EffectsManager.random.Next(SoundManager.Sounds_Explosion, SoundManager.Sounds_BigExplosion + 1));
 			}

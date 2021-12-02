@@ -20,7 +20,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 4 )
+extents = Vector2( 16, 14 )
 
 [sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0.0186335, 0.242236, 0.614907, 1 )
@@ -51,11 +51,11 @@ script = ExtResource( 10 )
 
 [node name="GroundFireAnim" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 6
 playing = true
 offset = Vector2( 0, -20 )
 
 [node name="GroundFireHitbox" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -10 )
 shape = SubResource( 2 )
 
 [node name="TimeLeft" type="Timer" parent="."]

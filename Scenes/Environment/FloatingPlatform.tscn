@@ -21,13 +21,14 @@ extents = Vector2( 14, 2.25 )
 
 [node name="FloatingPlatform" type="AnimatedSprite"]
 frames = SubResource( 1 )
-frame = 5
+frame = 4
 playing = true
 script = ExtResource( 7 )
 stationary = false
 
 [node name="PlatformBody" type="RigidBody2D" parent="."]
-mode = 1
+mode = 3
+mass = 0.00102041
 
 [node name="PlatformShape" type="CollisionShape2D" parent="PlatformBody"]
 position = Vector2( 0, -2.25 )

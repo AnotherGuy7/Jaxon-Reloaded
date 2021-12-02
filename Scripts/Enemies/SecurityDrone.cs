@@ -49,7 +49,7 @@ public class SecurityDrone : RigidBody2D
 		if (playerDetected)
 		{
 			Vector2 directionToPlayer = Player.position - GlobalPosition;
-			velocity.x = directionToPlayer.x;
+			velocity = directionToPlayer;
 			velocity = velocity.Normalized();
 			velocity *= MoveSpeed;
 
@@ -125,10 +125,10 @@ public class SecurityDrone : RigidBody2D
 				Vector2 goreVelocity = new Vector2(EffectsManager.random.Next(-8, 8 + 1) / 5f, -EffectsManager.random.Next(25, 50 + 1));
 				GoreManager.SpawnGore(goreIndex, GlobalPosition, goreVelocity);
 			}
-			for (int i = 0; i < EffectsManager.random.Next(2, 4 + 1); i++)
+			for (int i = 0; i < EffectsManager.random.Next(1, 3 + 1); i++)
 			{
-				Vector2 explosionPosition = GlobalPosition + new Vector2(EffectsManager.random.Next(-6, 6 + 1), EffectsManager.random.Next(-6, 6 + 1));
-				ParticlesManager.CreateExplosion(explosionPosition, 1f);
+				Vector2 explosionPosition = GlobalPosition + new Vector2(EffectsManager.random.Next(-10, 10 + 1), EffectsManager.random.Next(-10, 10 + 1));
+				ParticlesManager.CreateExplosion(explosionPosition, 0.5f);
 				if (EffectsManager.random.Next(0, 1 + 1) == 0)
 					SoundManager.PlaySound(EffectsManager.random.Next(SoundManager.Sounds_Explosion, SoundManager.Sounds_BigExplosion + 1));
 			}
