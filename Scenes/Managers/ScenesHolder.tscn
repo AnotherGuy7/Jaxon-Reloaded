@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Managers/ScenesHolder.cs" type="Script" id=1]
-[ext_resource path="res://Scenes/Maps/Test Maps/TestScene.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/UI/TitleScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/UI/ShopUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/UI/LevelSelectScreen.tscn" type="PackedScene" id=5]
@@ -21,7 +20,6 @@
 script = ExtResource( 1 )
 titleScreen = ExtResource( 3 )
 shopScreen = ExtResource( 4 )
-testScene = ExtResource( 2 )
 levelSelectScreen = ExtResource( 5 )
 cityArea1 = ExtResource( 14 )
 cityArea2 = ExtResource( 13 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scripts/Player.cs" type="Script" id=1]
 [ext_resource path="res://Textures/SpriteFrames/Player.tres" type="SpriteFrames" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://Sounds/Player/BlasterShootSound.wav" type="AudioStream" id=18]
 [ext_resource path="res://Textures/Projectiles/LaserBeam.png" type="Texture" id=19]
 [ext_resource path="res://Sounds/Player/DoomCannonShootSound.wav" type="AudioStream" id=20]
+[ext_resource path="res://Sounds/Impacts/SwordHit.wav" type="AudioStream" id=21]
+[ext_resource path="res://Sounds/Player/SwordSwing.wav" type="AudioStream" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 26 )
@@ -98,6 +100,13 @@ volume_db = -10.0
 [node name="HurtSound_2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = -6.0
+
+[node name="SwordSwingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+pitch_scale = 1.5
+
+[node name="SwordHitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
 
 [node name="PlayerUI" parent="." instance=ExtResource( 9 )]
 

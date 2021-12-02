@@ -27,6 +27,8 @@ public class Player : KinematicBody2D
 	private AudioStreamPlayer shootSound;
 	private AudioStreamPlayer hurtSound1;
 	private AudioStreamPlayer hurtSound2;
+	private AudioStreamPlayer swordSwingSound;
+	private AudioStreamPlayer swordHitSound;
 	public static Camera2D playerCam;
 
 	private float gunRotationOffset;
@@ -118,6 +120,8 @@ public class Player : KinematicBody2D
 		shootSound = GetNode<AudioStreamPlayer>("ShootSound");
 		hurtSound1 = GetNode<AudioStreamPlayer>("HurtSound_1");
 		hurtSound2 = GetNode<AudioStreamPlayer>("HurtSound_2");
+		swordSwingSound = GetNode<AudioStreamPlayer>("SwordSwingSound");
+		swordHitSound = GetNode<AudioStreamPlayer>("SwordHitSound");
 
 		playerGun.Texture = armTextures[activeGun];
 		shootSound.Stream = shootSounds[activeGun];
@@ -355,13 +359,13 @@ public class Player : KinematicBody2D
 			switch (activeGun)
 			{
 				case Gun_Phaser:
-					shootTimer += 25;
+					shootTimer += 35;
 					Node2D phaserProjectile = ProjectileManager.NewProjectile(ProjectileManager.Projectile_PlayerBullet_Yellow, 3, shootPosition, shootVector, HelperMethods.CollisionType.Enemies);
 					ParticlesManager.AttachParticles(phaserProjectile, ParticlesManager.BulletParticles, yellowBulletColor, 3);
 					break;
 
 				case Gun_Blaster:
-					shootTimer += 8;
+					shootTimer += 14;
 					float blasterShootVectorX = (float)Math.Cos(angleVector.Angle() + Mathf.Deg2Rad(EffectsManager.random.Next(-BlasterConeSpread, BlasterConeSpread + 1)));
 					float blasterShootVectorY = (float)Math.Sin(angleVector.Angle() + Mathf.Deg2Rad(EffectsManager.random.Next(-BlasterConeSpread, BlasterConeSpread + 1)));
 					shootVector = new Vector2(blasterShootVectorX, blasterShootVectorY) * 8f;
@@ -371,7 +375,7 @@ public class Player : KinematicBody2D
 					break;
 
 				case Gun_Boomer:
-					shootTimer += 40;
+					shootTimer += 75;
 					int amountOfBoomerBullets = 5;
 					for (int i = 0; i < amountOfBoomerBullets; i++)
 					{
@@ -380,13 +384,13 @@ public class Player : KinematicBody2D
 						float shootVectorY = (float)Math.Sin(angleVector.Angle() + Mathf.Deg2Rad(angleSpread));
 						shootVector = new Vector2(shootVectorX, shootVectorY).Normalized() * 8f;
 
-						Node2D boomerProjectile = ProjectileManager.NewProjectile(ProjectileManager.Projectile_PlayerBullet_Blue, 13, shootPosition, shootVector, HelperMethods.CollisionType.Enemies);
+						Node2D boomerProjectile = ProjectileManager.NewProjectile(ProjectileManager.Projectile_PlayerBullet_Blue, 6, shootPosition, shootVector, HelperMethods.CollisionType.Enemies);
 						ParticlesManager.AttachParticles(boomerProjectile, ParticlesManager.BulletParticles, blueBulletColor, 3);
 					}
 					break;
 
 				case Gun_PhaseRifle:
-					shootTimer += 18;
+					shootTimer += 22;
 					Node2D rifleProjectile = ProjectileManager.NewProjectile(ProjectileManager.Projectile_PlayerBullet_Green, 7, shootPosition, shootVector, HelperMethods.CollisionType.Enemies);
 					ParticlesManager.AttachParticles(rifleProjectile, ParticlesManager.BulletParticles, greenBulletColor, 3);
 					break;
@@ -417,9 +421,10 @@ public class Player : KinematicBody2D
 						}
 					}*/
 
-					shootTimer += 80;
-					Node2D cannonProjectile = ProjectileManager.NewProjectile(ProjectileManager.Projectile_DoomCannonLaser, 18, shootPosition, shootVector, HelperMethods.CollisionType.Enemies);
+					shootTimer += 90;
+					Node2D cannonProjectile = ProjectileManager.NewProjectile(ProjectileManager.Projectile_DoomCannonLaser, 21, shootPosition, shootVector, HelperMethods.CollisionType.Enemies);
 					ParticlesManager.AttachParticles(cannonProjectile, ParticlesManager.LaserParticles, new Color(1f, 0f, 0f, 1f), 3);
+					EffectsManager.ShakeCamera(3, 6);
 					break;
 
 		}
@@ -446,14 +451,14 @@ public class Player : KinematicBody2D
 				if (kBody.HasMethod("Hurt") && HelperMethods.CollisionTypeMatch(kBody, HelperMethods.CollisionType.Enemies))
 				{
 					kBody.Call("Hurt", SwordDamage + (5 * (strengthLevel - 1)));
+					swordHitSound.Play();
 				}
 			}
+			swordSwingSound.Play();
 		}
 
 		if (playerSwinging)
-		{
 			animationState = AnimationState.Swinging;
-		}
 	}
 
 	private void SetArmAnchors()

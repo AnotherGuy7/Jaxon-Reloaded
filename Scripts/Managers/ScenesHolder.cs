@@ -10,9 +10,6 @@ public class ScenesHolder : Node
 	public PackedScene shopScreen;
 
 	[Export]
-	public PackedScene testScene;
-
-	[Export]
 	public PackedScene levelSelectScreen;
 
 	[Export]
@@ -78,7 +75,7 @@ public class ScenesHolder : Node
 		containedPackedScenes[UI_TitleScreen] = titleScreen;
 		containedPackedScenes[UI_ShopScreen] = shopScreen;
 		containedPackedScenes[UI_LevelScreen] = levelSelectScreen;
-		containedPackedScenes[World_TestScene] = testScene;
+		containedPackedScenes[World_TestScene] = null;
 		containedPackedScenes[World_CityArea_1] = cityArea1;
 		containedPackedScenes[World_CityArea_2] = cityArea2;
 		containedPackedScenes[World_CityArea_3] = cityArea3;
