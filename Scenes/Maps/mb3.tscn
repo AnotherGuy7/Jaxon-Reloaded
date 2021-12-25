@@ -18,7 +18,7 @@ extents = Vector2( 24, 5 )
 
 [node name="mb3" type="Node2D"]
 script = ExtResource( 9 )
-nextLevelSceneID = 10
+nextLevelSceneID = 11
 bossLevel = true
 
 [node name="Background" type="Node2D" parent="."]
@@ -117,6 +117,7 @@ shape = SubResource( 1 )
 
 [node name="FloatingPlatform" parent="EnvironmentNode" instance=ExtResource( 7 )]
 position = Vector2( 96, -128 )
+frame = 0
 moveSpeed = 1.5
 
 [node name="StartPoint" type="Position2D" parent="EnvironmentNode/FloatingPlatform"]

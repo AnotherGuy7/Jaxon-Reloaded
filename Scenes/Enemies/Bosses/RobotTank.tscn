@@ -46,9 +46,17 @@ position = Vector2( 59, 0 )
 [node name="RobotTankAnim" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Idle"
+frame = 1
 playing = true
 
 [node name="RobotTankHitbox" type="CollisionShape2D" parent="."]
+position = Vector2( -4, 6 )
+shape = SubResource( 2 )
+
+[node name="TankHurtArea" type="Area2D" parent="."]
+visible = false
+
+[node name="RobotTankHitbox" type="CollisionShape2D" parent="TankHurtArea"]
 position = Vector2( -4, 6 )
 shape = SubResource( 2 )
 
@@ -87,6 +95,8 @@ stream = ExtResource( 8 )
 volume_db = -7.0
 pitch_scale = 0.7
 
+[connection signal="body_entered" from="TankHurtArea" to="." method="OnTankHurtAreaEntered"]
+[connection signal="body_exited" from="TankHurtArea" to="." method="OnTankHurtAreaExited"]
 [connection signal="area_entered" from="BotHitbox" to="." method="OnBotHitboxAreaEntered"]
 [connection signal="area_entered" from="RamHitbox" to="." method="OnRamHitboxEntered"]
 [connection signal="body_entered" from="RamHitbox" to="." method="OnRamHitboxBodyEntered"]

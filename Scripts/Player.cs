@@ -8,7 +8,7 @@ public class Player : KinematicBody2D
 	private const float JumpStrength = 21f;
 	private const float FloorGravity = 0.3f;
 	private const float FinalForceMultiplier = 15f;
-	private const float SwordDamage = 12;
+	private const float SwordDamage = 11;
 	private const int BlasterConeSpread = 7;		//Spread in degrees
 	private const int BoomerConeSpread = 18;
 	public static readonly int[] MaxHealth = new int[4] { 3, 5, 7, 9 };
@@ -159,7 +159,7 @@ public class Player : KinematicBody2D
 	public override void _PhysicsProcess(float delta)
 	{
 		velocity = Vector2.Zero;
-		float moveSpeed = DefaultMoveSpeed + (0.8f * (speedLevel - 1));
+		float moveSpeed = DefaultMoveSpeed + (1.2f * (speedLevel - 1));
 
 		PreUpdateSteps();
 		if (InputDefinitions.IsLeftPressed())

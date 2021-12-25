@@ -74,7 +74,7 @@ public class PlayerUI : Control
 	}
 
 	public static void SetMoneyCounterModulate(Color newColor)
-    {
+	{
 		playerUI.moneyLabel.Modulate = newColor;
-    }
+	}
 }

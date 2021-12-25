@@ -13,6 +13,8 @@ public class RobotTank : RigidBody2D
 	private int direction = -1;
 	private int missileShootTimer = 0;
 	private int laserShootTimer = 0;
+	private bool playerInBody = false;
+	private int playerBodyHurtTimer = 0;
 
 	[Export]
 	public PackedScene missileScene;
@@ -101,6 +103,15 @@ public class RobotTank : RigidBody2D
 			else
 				barrelSprite.GlobalRotationDegrees = 180f;
 		}
+		if (playerInBody)
+		{
+			playerBodyHurtTimer++;
+			if (playerBodyHurtTimer >= 60)
+			{
+				playerBodyHurtTimer = 0;
+				Player.player.Call("Hurt", 1);
+			}
+		}
 		//GD.Print(attackRestTimer.TimeLeft);
 	}
 
@@ -184,6 +195,22 @@ public class RobotTank : RigidBody2D
 			QueueFree();
 			PlayerUI.BossHealthBarVisibilty(true);
 		}
+	}
+	
+	private void OnTankHurtAreaEntered(object body)
+	{
+		if (body == Player.player)
+		{
+			playerInBody = true;
+			playerBodyHurtTimer = 0;
+		}
+	}
+
+
+	private void OnTankHurtAreaExited(object body)
+	{
+		if (body == Player.player)
+			playerInBody = false;
 	}
 
 	private void OnBotHitboxAreaEntered(object area)
